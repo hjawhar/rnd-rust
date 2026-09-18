@@ -1,0 +1,35 @@
+services:
+    db:
+        image: postgres:latest
+        container_name: sts_db
+        volumes:
+            - ./current_db:/var/lib/postgresql
+        environment:
+            POSTGRES_USER: "sts_user"
+            POSTGRES_DB: "sts_db"
+            POSTGRES_PASSWORD: "changeme"
+        ports:
+            - "5470:5432"
+        healthcheck:
+            test: ["CMD-SHELL", "sh -c 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}'"]
+            interval: 3s
+            timeout: 3s
+            retries: 3
+    web:
+        image: rust:1.83.0
+        container_name: sts_app
+        working_dir: /home/sts_app
+        command: "cargo run --release --bin webapp"
+        volumes:
+            - ./:/home/sts_app
+        restart: on-failure
+        depends_on:
+            db:
+                condition: service_healthy
+            # - db
+        environment:
+            DATABASE_URL: "postgres://sts_user:changeme@db/sts_db"
+        ports:
+            - 3000:3000
+        links:
+            - db

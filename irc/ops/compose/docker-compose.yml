@@ -1,0 +1,40 @@
+services:
+  irc-server:
+    build:
+      context: ../..
+      dockerfile: ops/docker/irc-server.Dockerfile
+    ports:
+      - "6667:6667"
+      - "6697:6697"
+      - "9772:9772"
+    volumes:
+      - server-data:/var/lib/irc-server
+      - ./server-config:/etc/app:ro
+    environment:
+      RUST_LOG: info
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ../prometheus/scrape.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ../grafana:/var/lib/grafana/dashboards:ro
+      - ./grafana-provisioning:/etc/grafana/provisioning:ro
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  server-data:

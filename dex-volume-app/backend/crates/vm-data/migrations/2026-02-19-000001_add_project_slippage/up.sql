@@ -1,0 +1,2 @@
+ALTER TABLE projects ADD COLUMN slippage DOUBLE PRECISION;
+ALTER TABLE projects ADD COLUMN bundle_enabled BOOLEAN;

@@ -1,0 +1,63 @@
+<div class="login-page">
+    <!-- Background Effects - Circuit Board -->
+    <div class="login-bg">
+        <div class="bg-base"></div>
+        <div class="bg-glow"></div>
+        <div class="circuit-lines circuit-left"></div>
+        <div class="circuit-lines circuit-right"></div>
+        <div class="data-streams"></div>
+        <!-- Circuit Nodes -->
+        <div class="circuit-nodes">
+            <span class="node" style="top: 20%; left: 8%;"></span>
+            <span class="node" style="top: 35%; left: 15%;"></span>
+            <span class="node" style="top: 50%; left: 5%;"></span>
+            <span class="node" style="top: 65%; left: 12%;"></span>
+            <span class="node" style="top: 80%; left: 18%;"></span>
+            <span class="node" style="top: 25%; right: 10%;"></span>
+            <span class="node" style="top: 45%; right: 6%;"></span>
+            <span class="node" style="top: 60%; right: 15%;"></span>
+            <span class="node" style="top: 75%; right: 8%;"></span>
+            <span class="node" style="top: 40%; left: 25%;"></span>
+            <span class="node" style="top: 55%; right: 22%;"></span>
+        </div>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+        <!-- Logo & Brand -->
+        <div class="login-header">
+            <div class="brand-logo">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h1 class="brand-title">Volume Maker</h1>
+            <p class="brand-subtitle">Trading Infrastructure Platform</p>
+        </div>
+
+        <!-- Wallet Connected State -->
+        <div class="wallet-connected" *ngIf="isPhantomClicked">
+            <div class="wallet-icon">
+                <i class="bi bi-wallet2"></i>
+            </div>
+            <div class="wallet-details">
+                <span class="wallet-label">Connected Wallet</span>
+                <span class="wallet-address">{{helperService.getWalletAddress()}}</span>
+            </div>
+            <div class="wallet-status">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+        </div>
+
+        <!-- Connect Button -->
+        <button class="connect-btn" (click)="!isPhantomClicked ? onPhantomLogin() : onClickLogin()">
+            <img src="/assets/images/phantom.svg" alt="Phantom" />
+            <span>{{isPhantomClicked ? 'Sign In' : 'Connect with Phantom'}}</span>
+            <i class="bi bi-arrow-right"></i>
+        </button>
+
+        <!-- Divider -->
+        <div class="login-divider">
+            <span>Secure Authentication</span>
+        </div>
+    </div>
+
+</div>

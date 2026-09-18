@@ -1,0 +1,94 @@
+<div class="page-container">
+    <!-- Header Section -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Projects</h1>
+            <p class="page-subtitle">Manage your trading projects and strategies</p>
+        </div>
+        <a routerLink="./new">
+            <button mat-raised-button color="primary">
+                <i class="bi bi-plus-lg me-2"></i>
+                New Project
+            </button>
+        </a>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid-cards" *ngIf="projects.length > 0">
+        @for (project of projects; track project.id) {
+        <a [routerLink]="'/projects/'+project.id" class="text-decoration-none">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <span class="status-dot status-dot-abs" [title]="project.locked ? 'locked' : project.status"
+                        [class.status-dot-running]="project.status === 'running' && !project.locked"
+                        [class.status-dot-stopped]="project.status === 'stopped' && !project.locked"
+                        [class.status-dot-locked]="project.locked">
+                    </span>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="token-image-wrapper">
+                            <img *ngIf="project.image" [src]="project.image" [alt]="project.name" class="token-image">
+                            <div *ngIf="!project.image" class="token-placeholder">
+                                <i class="bi bi-currency-exchange"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-1">
+                                <a class="token-name-link" [href]="getExplorerUrl(project.network)+'/address/'+project.address"
+                                    target="_blank" (click)="$event.stopPropagation()">
+                                    <span class="token-name">{{project.name}}</span>
+                                </a>
+                                <a class="token-symbol-link" [href]="getExplorerUrl(project.network)+'/address/'+project.address"
+                                    target="_blank" (click)="$event.stopPropagation()">
+                                    ${{project.symbol}}
+                                </a>
+                                <span class="pill pill-chain">
+                                    <img *ngIf="project.network === 'solana'" src="./assets/images/solana.svg" alt="SOL" />
+                                    <img *ngIf="project.network === 'base'" src="./assets/images/ethereum.svg" alt="ETH" />
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center gap-1 mt-1 flex-wrap">
+                                <span class="pill pill-strategy">{{getTradingStrategory(project.trading_strategy)}}</span>
+                                <a class="pill pill-pool" [href]="getExplorerUrl(project.network)+'/address/'+project.pool"
+                                    target="_blank" (click)="$event.stopPropagation()">{{project.pool_type}}</a>
+                                <a class="pill pill-fee" [href]="getExplorerUrl(project.network)+'/address/'+project.pool"
+                                    target="_blank" (click)="$event.stopPropagation()">{{project.fees}}%</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscription-row" *ngIf="subscriptions.get(project.id) as sub">
+                        <span class="subscription-rate">${{sub.monthly_rate}}/mo</span>
+                        <span class="subscription-sep">·</span>
+                        <span class="subscription-due">Due {{sub.next_payment_due.secs_since_epoch * 1000 | date: 'dd MMM'}}</span>
+                        <span class="subscription-status ms-auto"
+                            [class.sub-active]="sub.status === 'active' && !sub.is_overdue"
+                            [class.sub-overdue]="sub.is_overdue"
+                            [class.sub-suspended]="sub.status === 'suspended'"
+                            [class.sub-cancelled]="sub.status === 'cancelled'">
+                            <ng-container *ngIf="sub.is_overdue">{{sub.days_overdue}}d overdue</ng-container>
+                            <ng-container *ngIf="!sub.is_overdue">{{sub.status}}</ng-container>
+                        </span>
+                    </div>
+                    <div class="subscription-row" *ngIf="!subscriptions.get(project.id)">
+                        <span class="subscription-none">No subscription</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        }
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="projects.length === 0">
+        <div class="empty-icon">
+            <i class="bi bi-folder2-open"></i>
+        </div>
+        <h3>No Projects Yet</h3>
+        <p>Create your first trading project to get started</p>
+        <a routerLink="./new">
+            <button mat-raised-button color="primary">
+                <i class="bi bi-plus-lg me-2"></i>
+                Create Project
+            </button>
+        </a>
+    </div>
+</div>

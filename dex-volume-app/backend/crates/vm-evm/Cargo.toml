@@ -1,0 +1,17 @@
+[package]
+name = "vm-evm"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+alloy.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tokio.workspace = true
+vm-data.workspace = true
+bigdecimal.workspace = true
+hex.workspace = true
+rand.workspace = true
+dotenv.workspace = true

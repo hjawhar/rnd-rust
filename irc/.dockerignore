@@ -1,0 +1,10 @@
+target/
+.git/
+.github/
+*.log
+*.pem
+*.key
+*.crt
+*.secret
+ops/compose/server-config/
+ops/compose/bnc-config/

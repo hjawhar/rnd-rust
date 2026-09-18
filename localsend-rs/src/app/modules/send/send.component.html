@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            Selection
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-12 mb-2">
+            File
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-12 mb-2">
+            Folder
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-12 mb-2">
+            Text
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-12 mb-2">
+            Paste
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12">
+            Nearby devices
+        </div>
+    </div>
+    @for (nearby_device of nearby_devices; track (nearby_device.alias+'-'+nearby_device.deviceModel)) {
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="device-container">
+                #{{nearby_device.ipEnding}} {{ nearby_device.alias }}
+            </div>
+        </div>
+    </div>
+    }
+</div>

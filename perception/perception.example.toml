@@ -1,0 +1,52 @@
+# Perception — Example Configuration
+# Copy to perception.toml and edit to your needs.
+
+[capture]
+source = "camera"           # "image" | "video" | "camera" | "rtsp"
+path = "0"                   # file path, camera index, or rtsp:// URL
+fps_limit = 30
+
+[pipeline]
+detection = true
+face_recognition = false
+ocr = false
+confidence_threshold = 0.5
+
+[pipeline.detection_config]
+model = "yolo26n"
+classes = []
+
+[pipeline.face_config]
+detection_model = "scrfd_2.5g"
+recognition_model = "arcface_r50"
+known_faces_dir = "./faces/"
+similarity_threshold = 0.6
+
+[pipeline.ocr_config]
+model = "ppocr_v5"
+languages = ["en"]
+max_batch_size = 32
+
+[pipeline.tracker_config]
+enabled = true
+max_age = 30
+iou_threshold = 0.3
+
+[storage]
+backend = "sqlite"
+sqlite_path = "./perception.db"
+crops_dir = "./crops/"
+save_crops = true
+
+[storage.sync]
+enabled = false
+# postgres_url = "postgres://user:pass@host/perception"
+interval_secs = 60
+
+[preview]
+enabled = false
+window_width = 1280
+
+[models]
+cache_dir = "./models/"
+auto_download = true

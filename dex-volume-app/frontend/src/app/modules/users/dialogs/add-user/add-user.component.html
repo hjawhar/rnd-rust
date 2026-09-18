@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Add User</h2>
+<mat-dialog-content>
+    <form [formGroup]="addUserForm">
+        <div class="mb-2">
+            <div class="row mb-2">
+                <div class="col-12">
+                    <div>Address</div>
+                    <input matInput formControlName="address" type="text">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col-12">
+                <div>Group</div>
+                <select formControlName="group_id">
+                    <option *ngFor="let group of groups" [value]="group.id">
+                        {{group.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button type="button" [disabled]="addUserForm.invalid" (click)="addUser()">Add User</button>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,96 @@
+[package]
+name = "perception"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+description = "High-throughput real-time object detection, face recognition, and OCR pipeline"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/hjawhar/perception"
+
+[[bin]]
+name = "perception"
+path = "src/main.rs"
+
+[dependencies]
+# Inference
+ort = { version = "2.0.0-rc.12", default-features = false, features = ["ndarray", "std", "download-binaries", "copy-dylibs", "tls-native"] }
+ndarray = "0.17"
+
+# Image / Video capture
+opencv = { version = "0.98", default-features = false, features = [
+    "videoio",
+    "imgcodecs",
+    "imgproc",
+] }
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Storage
+sqlx = { version = "0.8", features = [
+    "runtime-tokio",
+    "sqlite",
+    "migrate",
+] }
+
+# Object tracking
+# jamtrack = "0.1"  # TODO: verify exact crate name on crates.io
+
+# Serialization / Config
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Observability
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Image processing
+image = "0.25"
+
+# Identifiers / Time
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Model download
+reqwest = { version = "0.12", features = ["stream"] }
+tokio-util = { version = "0.7", features = ["io"] }
+indicatif = "0.17"
+sha2 = "0.10"
+hex = "0.4"
+dirs = "6"
+
+# Async utilities
+async-trait = "0.1"
+futures = "0.3"
+
+[dev-dependencies]
+tempfile = "3"
+criterion = { version = "0.5", features = ["html_reports"] }
+tokio-test = "0.4"
+
+[features]
+default = ["cpu"]
+cpu = []
+cuda = ["ort/cuda"]
+tensorrt = ["ort/tensorrt"]
+coreml = ["ort/coreml"]
+preview = ["opencv/highgui"]
+postgres = ["sqlx/postgres"]
+
+[[bench]]
+name = "inference"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = "symbols"

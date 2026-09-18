@@ -1,0 +1,25 @@
+services:
+  nats:
+    image: nats:2.10-alpine
+    container_name: vm_nats
+    ports:
+      - "4222:4222" # Client connections
+      - "8222:8222" # HTTP monitoring
+      - "6222:6222" # Cluster routing
+    command:
+      - "-js" # Enable JetStream for persistence
+      - "-sd" # Store directory flag
+      - "/data" # Data directory for JetStream
+      - "-m" # HTTP monitoring port flag
+      - "8222" # HTTP monitoring port value
+    volumes:
+      - nats_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8222/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  nats_data:

@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    padding-top: 2.2rem;
+}
+
+.device-container {
+    background-color: var(--primary-bg-color);
+    padding: 1rem;
+    border-radius: 5px;
+}

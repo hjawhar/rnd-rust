@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+tr {
+    height: 40px !important;
+}
+
+.selected {
+    color: rgb(0, 255, 0);
+}
+
+.deselected {
+    color: rgb(235, 76, 76);
+}
+
+.bi-person-wheelchair,
+.bi-person-walking {
+    color: var(--theme-color);
+}

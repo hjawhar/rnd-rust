@@ -1,0 +1,32 @@
+[package]
+name = "irc-bnc"
+description = "Multi-user IRC bouncer with persistent upstreams and IRCv3 server-time replay."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "irc-bnc"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+
+[dependencies]
+irc-proto = { path = "../irc-proto", version = "0.1.0" }
+bytes = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync", "time", "io-util", "signal"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+futures-util = { version = "0.3", default-features = false, features = ["std", "sink"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+thiserror = "1"
+anyhow = "1"
+parking_lot = "0.12"

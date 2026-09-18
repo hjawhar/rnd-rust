@@ -1,0 +1,34 @@
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-select {
+    width: 200px;
+
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+}
+
+.clear-filters-btn {
+    height: 40px;
+    font-size: 13px;
+}
+
+.action-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.details-value {
+    font-size: 12px;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    opacity: 0.7;
+}

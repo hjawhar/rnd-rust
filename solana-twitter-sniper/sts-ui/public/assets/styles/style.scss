@@ -1,0 +1,194 @@
+@import './scrollbar.scss';
+@import './custom_styles.scss';
+
+:root {
+    --app-text-color: white;
+    --max-height: 32px;
+    --text-size: 0.8rem;
+    --app-bg-color: #141517;
+    --app-navbar-color: #1c1d20;
+    --mat-toolbar-standard-height: 40px;
+    --theme-color: rgb(169, 139, 204);
+    --mdc-checkbox-selected-icon-color: var(--theme-color) !important
+}
+
+img.logo {
+    max-height: 30px;
+}
+
+.logo-sm {
+    height: 0.6rem;
+}
+
+.mat-toolbar {
+    background-color: var(--app-navbar-color) !important;
+    font-size: 0.8rem !important;
+    border-bottom: 1px solid var(--app-bg-color);
+    margin-bottom: 0.8rem !important;
+    color: var(--app-text-color) !important;
+}
+
+a {
+    color: var(--theme-color) !important;
+    text-decoration: none !important;
+}
+
+.mdc-tab__text-label,
+.mat-mdc-tab.mdc-tab--active {
+    color: var(--app-text-color) !important;
+}
+
+.mdc-line-ripple {
+    display: none !important;
+}
+
+.mat-mdc-form-field-type-mat-select {
+    .mat-mdc-text-field-wrapper {
+        height: var(--max-height) !important;
+        padding: 0 8px !important;
+    }
+
+    .mat-mdc-select-value-text {
+        // font-size: var(--text-size) !important;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+    }
+}
+
+textarea {
+    background-color: var(--app-bg-color) !important;
+    border: 1px solid rgb(169, 139, 204);
+    color: white !important;
+    border-radius: 5px !important;
+    padding: 8px !important;
+}
+
+.mat-mdc-form-field {
+    font-size: var(--text-size);
+    width: 100%;
+
+    .mat-mdc-text-field-wrapper {
+        background-color: var(--app-bg-color) !important;
+        border: 1px solid rgb(169, 139, 204);
+
+        input,
+        ::placeholder,
+        .mat-mdc-select-value,
+        .mat-mdc-select-arrow {
+            color: white !important;
+        }
+    }
+}
+
+.mdc-text-field {
+    border-radius: 4px !important;
+}
+
+.mat-mdc-text-field-wrapper {
+    height: var(--max-height) !important;
+    padding: 0 8px !important;
+}
+
+.mat-mdc-form-field-infix {
+    padding: 4px 0 !important;
+    min-height: unset !important;
+}
+
+.mat-mdc-form-field-type-mat-input {
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+    }
+}
+
+.mat-mdc-form-field-flex {
+    height: var(--max-height);
+}
+
+.chips-input {
+    .mat-mdc-form-field-flex {
+        height: 100% !important;
+    }
+
+    .mat-mdc-text-field-wrapper {
+        height: 100% !important;
+        padding: 0 8px !important;
+    }
+}
+
+.title {
+    font-size: 0.8rem;
+}
+
+.sidenav-item {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.bi-lightning {
+    color: #a98bcc;
+}
+
+
+.global-text-light {
+    color: white;
+}
+
+.global-text-dark {
+    color: var(--app-bg-color);
+}
+
+.theme-color {
+    color: var(--theme-color);
+}
+
+.txt-lg {
+    font-size: 1.2rem;
+}
+
+mat-label,
+.mdc-label,
+h3,
+h4,
+.title {
+    @extend .global-text-light
+}
+
+button:disabled,
+button[disabled] {
+    color: gray;
+
+}
+
+hr {
+    border: 1px solid white;
+    // --bs-border-width: white !important
+}
+
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
+    background-color: var(--theme-color) !important;
+    /* Your custom color */
+    border-color: var(--theme-color) !important;
+}
+
+/* For the ripple effect */
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__ripple {
+    background-color: rgba(169, 139, 204, 0.2) !important;
+    /* Your custom color with opacity */
+}
+
+th {
+    border-bottom: 1px solid white !important;
+}
+
+td {
+    border-bottom: 1px solid white !important;
+}
+
+tr:last-child {
+    td {
+        border-bottom: 1px solid transparent !important;
+    }
+}

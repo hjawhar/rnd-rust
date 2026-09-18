@@ -1,0 +1,35 @@
+[package]
+name = "worker-evm"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dotenv.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+
+redis.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+bigdecimal.workspace = true
+
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+reqwest.workspace = true
+
+vm-data.workspace = true
+vm-nats.workspace = true
+vm-redis.workspace = true
+vm-evm.workspace = true
+async-nats.workspace = true
+
+futures.workspace = true
+alloy.workspace = true
+rustls.workspace = true
+
+hex.workspace = true
+chrono.workspace = true
+vm-volume.workspace = true

@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: irc-server
+    static_configs:
+      - targets: ['irc-server:9772']

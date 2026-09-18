@@ -1,0 +1,82 @@
+.workers-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .badge {
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #999;
+    }
+}
+
+.worker-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.worker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.worker-id {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.worker-no-tasks {
+    color: #999;
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+
+    &.online {
+        background: #4caf50;
+    }
+
+    &.offline {
+        background: #f44336;
+    }
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+
+    th {
+        text-align: left;
+        padding: 0.4rem 0.6rem;
+        color: #999;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    td {
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+}

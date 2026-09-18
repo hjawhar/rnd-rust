@@ -1,0 +1,11 @@
+/target
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.creds
+.nkeys/
+.local/

@@ -1,0 +1,20 @@
+[package]
+name = "gateway"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+common = { path = "../common" }
+axum.workspace = true
+tower-http.workspace = true
+tokio.workspace = true
+async-nats.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+clap.workspace = true
+uuid.workspace = true
+metrics.workspace = true
+chrono.workspace = true
+tracing-opentelemetry.workspace = true
+opentelemetry.workspace = true

@@ -1,0 +1,172 @@
+/* Custom Scrollbar CSS */
+:root {
+    --scrollbar-bg: #141517;
+    --scrollbar-thumb: rgb(169, 139, 204);
+    --scrollbar-thumb-hover: rgb(189, 159, 224);
+    --scrollbar-thumb-active: rgb(149, 119, 184);
+    --mat-paginator-disabled-icon-color: rgb(169, 139, 204);
+    --mat-paginator-enabled-icon-color: rgb(169, 139, 204);
+}
+
+.mat-mdc-paginator-container {
+    .mat-mdc-form-field {
+        border: 1px solid rgb(169, 139, 204);
+        border-radius: 5px;
+
+        * {
+            color: white !important;
+        }
+    }
+}
+
+
+// .mat-mdc-paginator-navigation-previous,
+// .mat-mdc-paginator-navigation-next {
+
+
+
+// /* Button Styles */
+// .mat-mdc-button-touch-target {
+//     background-color: #141517 !important;
+//     border: 2px solid rgb(169, 139, 204) !important;
+// }
+
+// .mat-mdc-button-touch-target:hover {
+//     background-color: rgb(169, 139, 204) !important;
+// }
+
+// span.mdc-button__label {
+//     color: white !important;
+// }
+
+// .mdc-button.mat-mdc-button-disabled {
+//     display: none !important;
+// }
+
+// /* Text Field Styles */
+// .mdc-text-field__input {
+//     background-color: #141517 !important;
+//     color: white !important;
+//     border: 2px solid rgb(169, 139, 204) !important;
+// }
+
+// .mdc-text-field__input::placeholder {
+//     color: white !important;
+// }
+
+// .mat-mdc-text-field-wrapper,
+// .mat-mdc-text-field-infix {
+//     padding: 0 !important;
+//     margin: 0 !important;
+//     background: none !important;
+//     border: none !important;
+//     box-shadow: none !important;
+// }
+
+// /* Select Styles */
+// .mat-mdc-select .mat-mdc-select-arrow-wrapper {
+//     display: none !important;
+// }
+
+// .mat-mdc-select-value {
+//     color: white;
+//     background-color: #141517 !important;
+//     border: 2px solid rgb(169, 139, 204) !important;
+// }
+
+// .mat-mdc-select-panel .mat-mdc-option {
+//     padding: 0 !important;
+//     background-color: #000000 !important;
+//     color: #ffffff;
+// }
+
+// .mat-mdc-select-panel .mat-mdc-option:hover {
+//     background-color: rgb(169, 139, 204) !important;
+//     color: #ffffff;
+// }
+
+// .mat-mdc-select-panel .mat-mdc-option.mat-selected {
+//     background-color: rgb(169, 139, 204) !important;
+//     color: #ffffff;
+// }
+
+// .mat-mdc-select-panel .mat-pseudo-checkbox {
+//     border: 2px solid rgb(169, 139, 204) !important;
+// }
+
+// .mat-mdc-select-panel .mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
+//     border: 2px solid rgb(169, 139, 204) !important;
+//     background-color: rgb(169, 139, 204) !important;
+// }
+
+// .mat-mdc-select-panel.mdc-menu-surface {
+//     box-shadow: none !important;
+//     border: none !important;
+//     margin: 0 !important;
+//     padding: 0 !important;
+// }
+
+/* Textarea Styles */
+// textarea[matInput] {
+//     background-color: #141517 !important;
+//     border: 2px solid rgb(169, 139, 204) !important;
+//     color: #ffffff !important;
+//     border-radius: 5px;
+// }
+
+// /* Dialog Styles */
+// .mat-mdc-dialog-content,
+// .mat-mdc-dialog-surface.mdc-dialog__surface,
+// .mat-mdc-dialog-title {
+//     background-color: #000000 !important;
+//     color: #ffffff !important;
+// }
+
+// /* Paginator Styles */
+// .mat-mdc-paginator .mat-mdc-button-touch-target {
+//     background-color: transparent !important;
+//     border: none !important;
+// }
+
+// .mat-mdc-paginator .mat-mdc-button-touch-target svg,
+// .mat-mdc-paginator .mat-mdc-paginator-navigation-next svg,
+// .mat-mdc-paginator .mat-mdc-paginator-navigation-previous svg {
+//     fill: #ffffff !important;
+// }
+
+// .mat-mdc-paginator .mat-mdc-button-disabled {
+//     display: none !important;
+// }
+
+/* Checkbox Styles */
+.mat-mdc-checkbox .mdc-checkbox__background {
+    border: 2px solid rgb(169, 139, 204) !important;
+}
+
+/* CSS Variables for Tables & Paginator Container */
+:root {
+    --mat-table-row-item-label-text-color: #ffffff;
+    --mat-table-header-headline-color: #ffffff;
+    --mat-paginator-container-background-color: #141517;
+    --mat-paginator-container-text-color: #ffffff;
+    --mat-table-background-color: #141517;
+}
+
+.mat-mdc-dialog-surface,
+.mdc-dialog__surface {
+    border: none !important;
+    border-radius: none !important;
+    // border: 1px solid red !important;
+}
+
+.mat-mdc-dialog-component-host {
+
+    display: block !important;
+    background-color: var(--mat-paginator-container-background-color) !important;
+
+    h2,
+    .global-text-light,
+    .global-text-dark {
+        color: white !important;
+    }
+}

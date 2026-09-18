@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    padding-top: 2.2rem;
+}
+
+.side-panel-content {
+    padding-left: 1rem;
+}
+
+.side-panel-title {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2rem;
+    /* font-family: "Roboto Mono", monospace; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold !important;
+    margin-bottom: 2rem;
+}
+
+.side-panel-link {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    height: 2.7rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    align-items: center;
+}

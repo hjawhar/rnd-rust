@@ -1,0 +1,40 @@
+[package]
+name = "localsend-rs"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# [lib]
+# # The `_lib` suffix may seem redundant but it is necessary
+# # to make the lib name unique and wouldn't conflict with the bin name.
+# # This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+# name = "localsend_rs_lib"
+# crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tokio-util = { version = "0.7.12", features = ["io"] }
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+network-interface = "2.0.0"
+tokio = { version = "1.41.0", features = ["full"] }
+futures = "0.3.31"
+futures-util = "0.3.31"
+rcgen = "0.13.1"
+uuid = { version = "1.11.0", features = ["v4"] }
+tracing = "0.1.40"
+axum = { version = "0.7.7", features = ["multipart"] }
+axum-extra = "0.9.4"
+axum-server = { version = "0.7.1", features = ["tls-rustls"] }
+tracing-log = "0.2.0"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+indicatif = "0.17.8"
+dialoguer = "0.11.0"
+console = "0.15.8"

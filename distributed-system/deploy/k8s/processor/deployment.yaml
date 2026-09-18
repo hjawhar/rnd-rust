@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor
+  namespace: distributed-system
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: processor
+  template:
+    metadata:
+      labels:
+        app: processor
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: processor
+          image: distributed-system/processor:dev
+          env:
+            - name: NATS_URL
+              value: "nats://nats.distributed-system.svc.cluster.local:4222"
+            - name: PROCESSING_DELAY_MS
+              value: "50"
+            - name: ENRICH_TIMEOUT_MS
+              value: "2000"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://otel-collector.distributed-system.svc.cluster.local:4317"

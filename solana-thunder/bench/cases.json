@@ -1,0 +1,1892 @@
+[
+  {
+    "id": "sol-usdc-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-0.1usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-1usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-10usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-100usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-1000usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-10000usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdc-100000usd-rev",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-0.1usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-1usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-10usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-100usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-1000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-10000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-usdt-100000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-0.1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-0.1usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-1usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-10usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-10usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-100usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-100usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-1000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-1000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-10000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-10000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-100000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-usdt-100000usd-rev",
+    "input_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-0.1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-0.1usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-1usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 999996,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-10usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-10usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 9999960,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-100usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-100usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 99999599,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-1000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-1000usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 999995993,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-10000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-10000usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 9999959928,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-100000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-USDSwr9A-100000usd-rev",
+    "input_mint": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 99999599277,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-0.1usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 6384356,
+    "usd_size": 0.1,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-1usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 63843559,
+    "usd_size": 1.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-10usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 638435591,
+    "usd_size": 10.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-100usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 6384355912,
+    "usd_size": 100.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-1000usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 63843559117,
+    "usd_size": 1000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-10000usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 638435591166,
+    "usd_size": 10000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-aF9kpuo8-100000usd-rev",
+    "input_mint": "aF9kpuo87Erwk83P8Bmq8QQsuxkwstje3Tc2Cyb5aYq",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 6384355911660,
+    "usd_size": 100000.0,
+    "liquidity_tier": "major",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-0.1usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 12747119,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-1usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 127471186,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-10usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1274711862,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-100usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 12747118623,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-1000usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 127471186233,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-10000usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1274711862331,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-4TyZGqRL-100000usd-rev",
+    "input_mint": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 12747118623305,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-0.1usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 69994404980,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-1usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 699944049800,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-10usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 6999440498004,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-100usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 69994404980036,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-1000usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 699944049800358,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-10000usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 6999440498003584,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-D1wZHkfk-100000usd-rev",
+    "input_mint": "D1wZHkfk8d6QsCjF3NTiYHLzsZJ2Qb4Q7WBFFbGuzBLV",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 69994404980035840,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-0.1usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 7041028,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-1usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 70410284,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-10usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 704102842,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-100usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 7041028421,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-1000usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 70410284206,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-10000usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 704102842063,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-Hotwre2J-100000usd-rev",
+    "input_mint": "Hotwre2JZQRayrUcw3iYj7tSj3HTSpbNiX8U3TsvuFUN",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 7041028420630,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-0.1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-0.1usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 685245,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-1usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 6852451,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-10usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-10usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 68524513,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-100usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-100usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 685245128,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-1000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-1000usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 6852451278,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-10000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-10000usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 68524512777,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-100000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-9TPL8dro-100000usd-rev",
+    "input_mint": "9TPL8droGJ7jThsq4momaoz6uhTcvX2SeMqipoPmNa8R",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 685245127765,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-0.1usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 859914,
+    "usd_size": 0.1,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-1usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 8599136,
+    "usd_size": 1.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-10usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 85991356,
+    "usd_size": 10.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-100usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 859913559,
+    "usd_size": 100.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-1000usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 8599135591,
+    "usd_size": 1000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-10000usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 85991355912,
+    "usd_size": 10000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-C7zZwC6Y-100000usd-rev",
+    "input_mint": "C7zZwC6YSuh7tTxnHGMjWBFkN5jdYJr2dqj53U6Tp6bQ",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 859913559119,
+    "usd_size": 100000.0,
+    "liquidity_tier": "mid",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-0.1usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 30304958,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-1usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 303049577,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-10usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 3030495774,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-100usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 30304957737,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-1000usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 303049577367,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-10000usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 3030495773674,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-3TYgKwkE-100000usd-rev",
+    "input_mint": "3TYgKwkE2Y3rxdw9osLRSpxpXmSC1C1oo19W9KHspump",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 30304957736744,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-0.1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-0.1usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1781355003,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-1usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 17813550025,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-10usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-10usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 178135500254,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-100usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-100usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1781355002541,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-1000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-1000usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 17813550025414,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-10000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-10000usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 178135500254137,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-100000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-SsVoCh2y-100000usd-rev",
+    "input_mint": "SsVoCh2ynpTgz7UDmdc1Nu47zyFntqKVW3S1WZgLps5",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1781355002541372,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-0.1usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 2560736009,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-1usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 25607360087,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-10usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 256073600870,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-100usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 2560736008698,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-1000usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 25607360086980,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-10000usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 256073600869798,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-J4HsEwcD-100000usd-rev",
+    "input_mint": "J4HsEwcDTxcYW3K3k1jj7DieTezHctcRZRAJQWNTfRx2",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 2560736008697982,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-0.1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 625000,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-0.1usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 14876996174969,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-1usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 6250000,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-1usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 148769961749691,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-10usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 62500000,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-10usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1487699617496906,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-100usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 625000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-100usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 14876996174969056,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-1000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 6250000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-1000usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 148769961749690560,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-10000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 62500000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-10000usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 1487699617496905728,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-100000usd-fwd",
+    "input_mint": "So11111111111111111111111111111111111111112",
+    "output_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "amount": 625000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "sol-FVHEAQQf-100000usd-rev",
+    "input_mint": "FVHEAQQfEGPfZbgCaqZiamVhPuZHxZU4vZb8eMjXr74j",
+    "output_mint": "So11111111111111111111111111111111111111112",
+    "amount": 14876996174969057280,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-0.1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 100000,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-0.1usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1249466117,
+    "usd_size": 0.1,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-1usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 1000000,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-1usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 12494661171,
+    "usd_size": 1.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-10usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 10000000,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-10usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 124946611714,
+    "usd_size": 10.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-100usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 100000000,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-100usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1249466117141,
+    "usd_size": 100.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-1000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 1000000000,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-1000usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 12494661171408,
+    "usd_size": 1000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-10000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 10000000000,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-10000usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 124946611714081,
+    "usd_size": 10000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-100000usd-fwd",
+    "input_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "output_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "amount": 100000000000,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  },
+  {
+    "id": "usdc-kkptc1Au-100000usd-rev",
+    "input_mint": "kkptc1AusxWNu6BTdWhUZxgMddrS2KDJFodZGB8G2bj",
+    "output_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 1249466117140807,
+    "usd_size": 100000.0,
+    "liquidity_tier": "tail",
+    "slippage_bps": 50
+  }
+]

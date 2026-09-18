@@ -1,0 +1,4 @@
+[alias]
+gw = "run --bin bambu-gateway --"
+api = "run --bin bambu-api --"
+bridge = "run --bin bambu-bridge --"

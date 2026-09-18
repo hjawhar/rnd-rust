@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: black; 
+}
+
+h5 {
+    color: var(--app-text-color)
+}

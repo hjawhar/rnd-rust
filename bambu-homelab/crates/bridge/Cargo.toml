@@ -1,0 +1,31 @@
+[package]
+name = "bambu-bridge"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bambu-bridge"
+path = "src/main.rs"
+
+[dependencies]
+bambu-shared = { workspace = true }
+rumqttc = { workspace = true }
+async-nats = { workspace = true }
+tokio = { workspace = true }
+prost = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+config = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+diesel = { workspace = true }
+diesel-async = { workspace = true }
+futures-util = "0.3"
+rustls = { version = "0.22", default-features = false, features = ["ring", "logging", "tls12"] }
+suppaftp = { workspace = true }
+native-tls = { workspace = true }
+base64 = { workspace = true }

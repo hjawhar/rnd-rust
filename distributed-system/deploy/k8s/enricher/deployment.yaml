@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enricher
+  namespace: distributed-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enricher
+  template:
+    metadata:
+      labels:
+        app: enricher
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: enricher
+          image: distributed-system/enricher:dev
+          env:
+            - name: NATS_URL
+              value: "nats://nats.distributed-system.svc.cluster.local:4222"
+            - name: ENRICH_DELAY_MS
+              value: "10"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://otel-collector.distributed-system.svc.cluster.local:4317"

@@ -1,0 +1,38 @@
+[package]
+name = "irc-proto-fuzz"
+version = "0.1.0"
+publish = false
+edition = "2024"
+rust-version = "1.85"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+bytes = "1"
+libfuzzer-sys = "0.4"
+
+[dependencies.irc-proto]
+path = ".."
+
+[[bin]]
+name = "decoder"
+path = "fuzz_targets/decoder.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "casemap"
+path = "fuzz_targets/casemap.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "codec"
+path = "fuzz_targets/codec.rs"
+test = false
+doc = false
+
+# Opt this package out of the parent workspace so `cargo` in the repo
+# root never tries to compile the fuzz harness.
+[workspace]

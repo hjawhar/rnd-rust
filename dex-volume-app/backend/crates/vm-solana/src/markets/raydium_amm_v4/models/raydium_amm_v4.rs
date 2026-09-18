@@ -1,0 +1,126 @@
+use borsh::BorshDeserialize;
+
+pub const AMM_INFO_SIZE: usize = core::mem::size_of::<RaydiumAMMV4>();
+
+pub const FEES_SIZE: usize = core::mem::size_of::<Fees>();
+
+#[derive(
+    Debug, BorshDeserialize, serde::Deserialize, serde::Serialize, PartialEq, Eq, Clone, Hash,
+)]
+pub struct Fees {
+    pub min_separate_numerator: u64,
+    pub min_separate_denominator: u64,
+    pub trade_fee_numerator: u64,
+    pub trade_fee_denominator: u64,
+    pub pnl_numerator: u64,
+    pub pnl_denominator: u64,
+    pub swap_fee_numerator: u64,
+    pub swap_fee_denominator: u64,
+}
+
+#[derive(
+    Debug, BorshDeserialize, serde::Serialize, serde::Deserialize, PartialEq, Eq, Clone, Hash,
+)]
+pub struct OutPutData {
+    pub need_take_pnl_coin: u64,
+    pub need_take_pnl_pc: u64,
+    pub total_pnl_pc: u64,
+    pub total_pnl_coin: u64,
+    pub pool_open_time: u64,
+    pub punish_pc_amount: u64,
+    pub punish_coin_amount: u64,
+    pub orderbook_to_init_time: u64,
+    pub swap_coin_in_amount: u128,
+    pub swap_pc_out_amount: u128,
+    pub swap_take_pc_fee: u64,
+    pub swap_pc_in_amount: u128,
+    pub swap_coin_out_amount: u128,
+    pub swap_take_coin_fee: u64,
+}
+
+#[derive(Debug, BorshDeserialize, Clone, serde::Serialize, serde::Deserialize)]
+pub struct RaydiumAMMV4 {
+    pub status: u64,
+    pub nonce: u64,
+    pub max_order: u64,
+    pub depth: u64,
+    pub base_decimal: u64,
+    pub quote_decimal: u64,
+    pub state: u64,
+    pub reset_flag: u64,
+    pub min_size: u64,
+    pub vol_max_cut_ratio: u64,
+    pub amount_wave: u64,
+    pub base_lot_size: u64,
+    pub quote_lot_size: u64,
+    pub min_price_multiplier: u64,
+    pub max_price_multiplier: u64,
+    pub system_decimal_value: u64,
+    pub min_separate_numerator: u64,
+    pub min_separate_denominator: u64,
+    pub trade_fee_numerator: u64,
+    pub trade_fee_denominator: u64,
+    pub pnl_numerator: u64,
+    pub pnl_denominator: u64,
+    pub swap_fee_numerator: u64,
+    pub swap_fee_denominator: u64,
+    pub base_need_take_pnl: u64,
+    pub quote_need_take_pnl: u64,
+    pub quote_total_pnl: u64,
+    pub base_total_pnl: u64,
+    pub pool_open_time: u64,
+    pub punish_pc_amount: u64,
+    pub punish_coin_amount: u64,
+    pub orderbook_to_init_time: u64,
+    pub swap_base_in_amount: u128,
+    pub swap_quote_out_amount: u128,
+    pub swap_base_2_quote_fee: u64,
+    pub swap_quote_in_amount: u128,
+    pub swap_base_out_amount: u128,
+    pub swap_quote_2_base_fee: u64,
+    pub base_vault: solana_pubkey::Pubkey,
+    pub quote_vault: solana_pubkey::Pubkey,
+    pub base_mint: solana_pubkey::Pubkey,
+    pub quote_mint: solana_pubkey::Pubkey,
+    pub lp_mint: solana_pubkey::Pubkey,
+    pub open_orders: solana_pubkey::Pubkey,
+    pub market_id: solana_pubkey::Pubkey,
+    pub market_program_id: solana_pubkey::Pubkey,
+    pub target_oders: solana_pubkey::Pubkey,
+    pub withdraw_queue: solana_pubkey::Pubkey,
+    pub lp_vault: solana_pubkey::Pubkey,
+    pub owner: solana_pubkey::Pubkey,
+    pub lp_reserve: u64,
+    pub padding: [u64; 3],
+}
+
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[allow(non_snake_case)]
+pub struct RaydiumAmmV4Pool {
+    pub authority: String,
+    pub baseDecimals: u64,
+    pub baseMint: String,
+    pub baseVault: String,
+    pub id: String,
+    pub lookupTableAccount: String,
+    pub lpDecimals: u64,
+    pub lpMint: String,
+    pub lpVault: String,
+    pub marketAsks: String,
+    pub marketAuthority: String,
+    pub marketBaseVault: String,
+    pub marketBids: String,
+    pub marketEventQueue: String,
+    pub marketId: String,
+    pub marketProgramId: String,
+    pub marketQuoteVault: String,
+    pub marketVersion: u64,
+    pub openOrders: String,
+    pub programId: String,
+    pub quoteDecimals: u64,
+    pub quoteMint: String,
+    pub quoteVault: String,
+    pub targetOrders: String,
+    pub version: u64,
+    pub withdrawQueue: String,
+}

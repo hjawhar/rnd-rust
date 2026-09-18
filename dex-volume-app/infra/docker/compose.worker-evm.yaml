@@ -1,0 +1,15 @@
+services:
+  worker_evm:
+    image: rust:1.90.0
+    container_name: worker_evm
+    working_dir: /home/worker_evm
+    command: "cargo run --release --bin worker-evm"
+    env_file:
+      - path: ../../.env
+        required: false
+    environment:
+      - APP_ENV=${APP_ENV:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-}  # Defaults per APP_ENV: dev=debug, prod=info
+    volumes:
+      - ../../backend:/home/worker_evm
+    restart: on-failure

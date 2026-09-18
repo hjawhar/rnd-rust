@@ -1,0 +1,20 @@
+.upper-part {
+    height: 46vh;
+    max-height: 46vh;
+    overflow-y: auto;
+}
+
+.scrollable-tweet-container {
+    height: 85vh;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.scrollable-logs-container {
+    height: 39vh;
+    overflow-y: auto;
+}
+
+.timestamp {
+    color: yellow
+}

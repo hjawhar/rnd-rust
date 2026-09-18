@@ -1,0 +1,5 @@
+paddlepaddle==3.0-rc
+paddleocr==2.10.0
+Flask
+waitress
+matplotlib

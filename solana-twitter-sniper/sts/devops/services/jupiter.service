@@ -1,0 +1,22 @@
+[Unit]
+Description=Jupiter
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=on-failure
+#Restart=always
+#RestartSec=1
+User=root
+LimitNOFILE=1000000
+LogRateLimitIntervalSec=0
+#WorkingDirectory=
+#Environment="PATH=/bin:/usr/bin"
+#ExecStart=/root/jupiter-swap-api \
+Environment="RUST_LOG=info"
+ExecStart=/root/jupiter-swap-api --rpc-url YOUR_RPC_URL --yellowstone-grpc-endpoint YOUR_GEYSER_ENDPOINT --yellowstone-grpc-x-token YOUR_GEYSER_TOKEN
+
+[Install]
+WantedBy=multi-user.target
+

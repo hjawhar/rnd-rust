@@ -1,0 +1,430 @@
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+// Background Effects - Circuit Board Design
+.login-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+// Dark base background
+.bg-base {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0a0e14 0%, #060a0f 100%);
+}
+
+// Center glow effect
+.bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
+}
+
+// Circuit lines from left side
+.circuit-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    background-image:
+        // Horizontal traces at different heights
+        linear-gradient(90deg, rgba(0, 212, 170, 0.4) 0%, rgba(0, 212, 170, 0.15) 60%, transparent 100%),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.35) 0%, rgba(0, 212, 170, 0.1) 70%, transparent 100%),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.3) 0%, rgba(0, 212, 170, 0.12) 50%, transparent 100%),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.25) 0%, rgba(0, 212, 170, 0.08) 80%, transparent 100%),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.35) 0%, rgba(0, 212, 170, 0.1) 65%, transparent 100%),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.3) 0%, rgba(0, 212, 170, 0.15) 55%, transparent 100%);
+    background-size: 100% 2px, 100% 1px, 100% 2px, 100% 1px, 100% 2px, 100% 1px;
+    background-position: 0 15%, 0 25%, 0 38%, 0 52%, 0 68%, 0 82%;
+    background-repeat: no-repeat;
+}
+
+// Circuit lines from right side
+.circuit-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    background-image:
+        // Horizontal traces at different heights
+        linear-gradient(270deg, rgba(0, 212, 170, 0.4) 0%, rgba(0, 212, 170, 0.15) 60%, transparent 100%),
+        linear-gradient(270deg, rgba(0, 212, 170, 0.35) 0%, rgba(0, 212, 170, 0.1) 70%, transparent 100%),
+        linear-gradient(270deg, rgba(0, 212, 170, 0.3) 0%, rgba(0, 212, 170, 0.12) 50%, transparent 100%),
+        linear-gradient(270deg, rgba(0, 212, 170, 0.25) 0%, rgba(0, 212, 170, 0.08) 80%, transparent 100%),
+        linear-gradient(270deg, rgba(0, 212, 170, 0.35) 0%, rgba(0, 212, 170, 0.1) 65%, transparent 100%),
+        linear-gradient(270deg, rgba(0, 212, 170, 0.3) 0%, rgba(0, 212, 170, 0.15) 55%, transparent 100%);
+    background-size: 100% 2px, 100% 1px, 100% 2px, 100% 1px, 100% 2px, 100% 1px;
+    background-position: 0 20%, 0 32%, 0 45%, 0 58%, 0 72%, 0 88%;
+    background-repeat: no-repeat;
+}
+
+// Vertical data streams in center
+.data-streams {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 100%;
+    background-image:
+        // Multiple vertical lines with varying opacity
+        linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.3) 20%, rgba(0, 212, 170, 0.5) 50%, rgba(0, 212, 170, 0.3) 80%, transparent 100%),
+        linear-gradient(180deg, transparent 5%, rgba(0, 212, 170, 0.2) 25%, rgba(0, 212, 170, 0.4) 50%, rgba(0, 212, 170, 0.2) 75%, transparent 95%),
+        linear-gradient(180deg, transparent 10%, rgba(0, 212, 170, 0.25) 30%, rgba(0, 212, 170, 0.35) 50%, rgba(0, 212, 170, 0.25) 70%, transparent 90%),
+        linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.15) 35%, rgba(0, 212, 170, 0.3) 50%, rgba(0, 212, 170, 0.15) 65%, transparent 100%),
+        linear-gradient(180deg, transparent 15%, rgba(0, 212, 170, 0.2) 40%, rgba(0, 212, 170, 0.35) 50%, rgba(0, 212, 170, 0.2) 60%, transparent 85%);
+    background-size: 2px 100%, 1px 100%, 2px 100%, 1px 100%, 2px 100%;
+    background-position: -60px 0, -40px 0, -15px 0, 20px 0, 50px 0;
+    background-repeat: no-repeat;
+    animation: dataFlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes dataFlow {
+    0% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// Animated current pulses on left circuits
+.circuit-left::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(90deg, rgba(0, 255, 200, 0.9) 0%, rgba(0, 212, 170, 0.5) 30%, transparent 60%),
+        linear-gradient(90deg, rgba(0, 255, 200, 0.8) 0%, rgba(0, 212, 170, 0.4) 40%, transparent 70%),
+        linear-gradient(90deg, rgba(0, 255, 200, 0.7) 0%, rgba(0, 212, 170, 0.3) 35%, transparent 65%);
+    background-size: 150px 2px, 120px 1px, 100px 2px;
+    background-position: -150px 15%, -120px 38%, -100px 68%;
+    background-repeat: no-repeat;
+    animation: currentFlowLeft 3s linear infinite;
+}
+
+@keyframes currentFlowLeft {
+    0% {
+        background-position: -150px 15%, -120px 38%, -100px 68%;
+    }
+    100% {
+        background-position: calc(100% + 50px) 15%, calc(100% + 30px) 38%, calc(100% + 20px) 68%;
+    }
+}
+
+// Animated current pulses on right circuits
+.circuit-right::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(270deg, rgba(0, 255, 200, 0.9) 0%, rgba(0, 212, 170, 0.5) 30%, transparent 60%),
+        linear-gradient(270deg, rgba(0, 255, 200, 0.8) 0%, rgba(0, 212, 170, 0.4) 40%, transparent 70%),
+        linear-gradient(270deg, rgba(0, 255, 200, 0.7) 0%, rgba(0, 212, 170, 0.3) 35%, transparent 65%);
+    background-size: 150px 2px, 120px 1px, 100px 2px;
+    background-position: calc(100% + 150px) 20%, calc(100% + 120px) 45%, calc(100% + 100px) 72%;
+    background-repeat: no-repeat;
+    animation: currentFlowRight 3.5s linear infinite;
+}
+
+@keyframes currentFlowRight {
+    0% {
+        background-position: calc(100% + 150px) 20%, calc(100% + 120px) 45%, calc(100% + 100px) 72%;
+    }
+    100% {
+        background-position: -50px 20%, -30px 45%, -20px 72%;
+    }
+}
+
+// Circuit Nodes
+.circuit-nodes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #00d4aa;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 212, 170, 0.8), 0 0 16px rgba(0, 212, 170, 0.4);
+    animation: nodePulse 2.5s ease-in-out infinite;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, rgba(0, 212, 170, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    &:nth-child(odd) {
+        animation-delay: 0.5s;
+    }
+
+    &:nth-child(3n) {
+        animation-delay: 1s;
+    }
+}
+
+@keyframes nodePulse {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 6px rgba(0, 212, 170, 0.6), 0 0 12px rgba(0, 212, 170, 0.3);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(0, 212, 170, 1), 0 0 20px rgba(0, 212, 170, 0.5);
+    }
+}
+
+// Login Card
+.login-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(135deg, rgba(30, 37, 48, 0.9) 0%, rgba(23, 28, 36, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    backdrop-filter: blur(20px);
+}
+
+// Header
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.brand-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #00d4aa 0%, #00bcd4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
+
+    i {
+        font-size: 1.75rem;
+        color: #fff;
+    }
+}
+
+.brand-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+// Wallet Connected State
+.wallet-connected {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(0, 212, 170, 0.08);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.wallet-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0, 212, 170, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    i {
+        font-size: 1.1rem;
+        color: #00d4aa;
+    }
+}
+
+.wallet-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.wallet-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wallet-address {
+    font-size: 0.8rem;
+    color: #fff;
+    font-family: 'SF Mono', 'Roboto Mono', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wallet-status {
+    flex-shrink: 0;
+
+    i {
+        font-size: 1.25rem;
+        color: #00d4aa;
+    }
+}
+
+// Connect Button
+.connect-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #ab47bc 0%, #7c4dff 100%);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
+
+    i {
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(171, 71, 188, 0.4);
+
+        &::before {
+            opacity: 1;
+        }
+
+        i {
+            transform: translateX(4px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Divider
+.login-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    span {
+        padding: 0 1rem;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+// Info Text
+.login-info {
+    text-align: center;
+
+    p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .contact-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        i {
+            color: #5865F2;
+            font-size: 1rem;
+        }
+
+        strong {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+}
+

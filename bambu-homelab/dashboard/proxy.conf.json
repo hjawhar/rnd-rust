@@ -1,0 +1,15 @@
+{
+  "/api": {
+    "target": "http://127.0.0.1:3000",
+    "secure": false,
+    "ws": true
+  },
+  "/streams": {
+    "target": "http://127.0.0.1:8090",
+    "secure": false
+  },
+  "/timelapses": {
+    "target": "http://127.0.0.1:8090",
+    "secure": false
+  }
+}

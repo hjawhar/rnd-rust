@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>makana</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #141822;
+      --border: #222938;
+      --fg: #e6eaf2;
+      --muted: #7b869c;
+      --accent: #62d1a8;
+      --warn: #e6b95c;
+      --bad: #e06c75;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .status {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background 150ms;
+    }
+    .dot.on { background: var(--accent); }
+    .dot.warn { background: var(--warn); }
+    .dot.bad { background: var(--bad); }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    .card .label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .card .value {
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+    .card .value.stale { color: var(--muted); }
+    .card .unit {
+      font-size: 13px;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+    .card .sub {
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .spark {
+      display: block;
+      width: 100%;
+      height: 32px;
+      margin-top: 8px;
+      overflow: visible;
+    }
+    .spark path { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+    .spark circle { fill: var(--accent); }
+    .wide { grid-column: span 2; }
+    @media (max-width: 620px) { .wide { grid-column: span 1; } }
+    footer {
+      padding: 12px 24px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    .dtc {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 24px;
+      max-width: 1200px;
+      margin: 0 24px 24px;
+    }
+    @media (min-width: 1248px) {
+      .dtc { margin-left: auto; margin-right: auto; }
+    }
+    .dtc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .dtc-header .label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .dtc-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .dtc-list {
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+    .dtc-list.has-codes { color: var(--fg); }
+    .dtc-code {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    .dtc-code.sys-p, .dtc-code.sys-u { color: var(--accent); }
+    .dtc-code.sys-c, .dtc-code.sys-b { color: var(--warn); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>makana</h1>
+    <div class="status">
+      <span class="dot" id="dot"></span>
+      <span id="state">disconnected</span>
+      <span id="source"></span>
+    </div>
+  </header>
+  <main>
+    <section class="card wide" data-kind="rpm">
+      <div class="label">Engine RPM</div>
+      <div class="value stale"><span id="v-rpm">—</span><span class="unit">rpm</span></div>
+      <div class="sub" id="t-rpm">never</div>
+    </section>
+    <section class="card wide" data-kind="speed_kph">
+      <div class="label">Speed</div>
+      <div class="value stale"><span id="v-speed_kph">—</span><span class="unit">km/h</span></div>
+      <div class="sub" id="t-speed_kph">never</div>
+    </section>
+    <section class="card" data-kind="coolant_temp_c">
+      <div class="label">Coolant</div>
+      <div class="value stale"><span id="v-coolant_temp_c">—</span><span class="unit">°C</span></div>
+      <div class="sub" id="t-coolant_temp_c">never</div>
+    </section>
+    <section class="card" data-kind="intake_temp_c">
+      <div class="label">Intake Air</div>
+      <div class="value stale"><span id="v-intake_temp_c">—</span><span class="unit">°C</span></div>
+      <div class="sub" id="t-intake_temp_c">never</div>
+    </section>
+    <section class="card" data-kind="throttle_percent">
+      <div class="label">Throttle</div>
+      <div class="value stale"><span id="v-throttle_percent">—</span><span class="unit">%</span></div>
+      <div class="sub" id="t-throttle_percent">never</div>
+    </section>
+    <section class="card" data-kind="engine_load_percent">
+      <div class="label">Engine Load</div>
+      <div class="value stale"><span id="v-engine_load_percent">—</span><span class="unit">%</span></div>
+      <div class="sub" id="t-engine_load_percent">never</div>
+    </section>
+    <section class="card" data-kind="battery_volts">
+      <div class="label">Battery</div>
+      <div class="value stale"><span id="v-battery_volts">—</span><span class="unit">V</span></div>
+      <div class="sub" id="t-battery_volts">never</div>
+    </section>
+    <section class="card" data-kind="fuel_percent">
+      <div class="label">Fuel Level</div>
+      <div class="value stale"><span id="v-fuel_percent">—</span><span class="unit">%</span></div>
+      <div class="sub" id="t-fuel_percent">never</div>
+    </section>
+  </main>
+  <section id="dtc-panel" class="dtc">
+    <div class="dtc-header">
+      <span class="label">Diagnostic Trouble Codes</span>
+      <span class="dtc-meta" id="dtc-meta">never received</span>
+    </div>
+    <div class="dtc-list" id="dtc-list">—</div>
+  </section>
+  <footer>
+    <span id="samples">0</span> samples received ·
+    last event: <span id="last-event">—</span>
+  </footer>
+
+  <script>
+    const dot = document.getElementById("dot");
+    const state = document.getElementById("state");
+    const sourceEl = document.getElementById("source");
+    const samplesEl = document.getElementById("samples");
+    const lastEventEl = document.getElementById("last-event");
+
+    // Per-PID formatters. "kind" comes from the wire format (snake_case).
+    const formatters = {
+      rpm: v => Math.round(v).toLocaleString(),
+      speed_kph: v => Math.round(v),
+      coolant_temp_c: v => v,
+      intake_temp_c: v => v,
+      throttle_percent: v => v.toFixed(1),
+      engine_load_percent: v => v.toFixed(1),
+      battery_volts: v => v.toFixed(2),
+      fuel_percent: v => v.toFixed(1),
+    };
+
+    const HISTORY_MAX = 120;
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    // Per-kind state: { buf: [{t,v}], path, dot, dirty }
+    const sparks = Object.create(null);
+
+    function initSparks() {
+      document.querySelectorAll("section.card[data-kind]").forEach(section => {
+        const kind = section.dataset.kind;
+        const svg = document.createElementNS(SVG_NS, "svg");
+        svg.setAttribute("class", "spark");
+        svg.setAttribute("viewBox", "0 0 200 32");
+        svg.setAttribute("preserveAspectRatio", "none");
+        const path = document.createElementNS(SVG_NS, "path");
+        const dot = document.createElementNS(SVG_NS, "circle");
+        dot.setAttribute("r", "1.75");
+        dot.setAttribute("cx", "-10");
+        dot.setAttribute("cy", "-10");
+        svg.appendChild(path);
+        svg.appendChild(dot);
+        section.appendChild(svg);
+        sparks[kind] = { buf: [], path, dot, dirty: false };
+      });
+    }
+
+    function pushSample(kind, t, v) {
+      const s = sparks[kind];
+      if (!s) return;
+      s.buf.push({ t, v });
+      if (s.buf.length > HISTORY_MAX) s.buf.shift();
+      s.dirty = true;
+    }
+
+    function renderSpark(s) {
+      const n = s.buf.length;
+      if (n < 2) {
+        s.path.setAttribute("d", "");
+        s.dot.setAttribute("cx", "-10");
+        s.dot.setAttribute("cy", "-10");
+        return;
+      }
+      let min = Infinity, max = -Infinity;
+      for (let i = 0; i < n; i++) {
+        const v = s.buf[i].v;
+        if (v < min) min = v;
+        if (v > max) max = v;
+      }
+      const pad = (max - min) * 0.05;
+      let lo = min - pad, hi = max + pad;
+      if (hi - lo < 1e-9) { lo -= 1; hi += 1; }
+      const W = 200, H = 32;
+      const stepX = n > 1 ? W / (n - 1) : 0;
+      let d = "";
+      let lastX = 0, lastY = 0;
+      for (let i = 0; i < n; i++) {
+        const x = i * stepX;
+        const y = H - ((s.buf[i].v - lo) / (hi - lo)) * H;
+        d += (i === 0 ? "M" : "L") + x.toFixed(2) + "," + y.toFixed(2) + " ";
+        lastX = x; lastY = y;
+      }
+      s.path.setAttribute("d", d.trimEnd());
+      s.dot.setAttribute("cx", lastX.toFixed(2));
+      s.dot.setAttribute("cy", lastY.toFixed(2));
+    }
+
+    let rafPending = false;
+    function scheduleRender() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        for (const kind in sparks) {
+          const s = sparks[kind];
+          if (s.dirty) { renderSpark(s); s.dirty = false; }
+        }
+      });
+    }
+
+    let sampleCount = 0;
+    let ws;
+    let reconnectDelay = 500;
+
+    function setStatus(kind, text) {
+      dot.className = "dot " + kind;
+      state.textContent = text;
+    }
+
+    function apply(sample) {
+      sampleCount++;
+      samplesEl.textContent = sampleCount;
+      sourceEl.textContent = sample.source ? `· ${sample.source}` : "";
+
+      const p = sample.payload;
+      if (!p) return;
+
+      if (p.type === "event") {
+        lastEventEl.textContent = p.event + (p.message ? ` (${p.message})` : "");
+        if (p.event === "connected") setStatus("on", "connected");
+        if (p.event === "disconnected") setStatus("warn", "source disconnected");
+        if (p.event === "error") setStatus("bad", "source error");
+        return;
+      }
+      if (p.type === "obd" && p.kind === "dtcs") {
+        const listEl = document.getElementById("dtc-list");
+        const metaEl = document.getElementById("dtc-meta");
+        const arr = Array.isArray(p.value) ? p.value : [];
+        const letterMap = { powertrain: "P", chassis: "C", body: "B", network: "U" };
+        if (arr.length === 0) {
+          listEl.classList.remove("has-codes");
+          listEl.textContent = "No codes.";
+        } else {
+          const html = arr.map(d => {
+            const letter = letterMap[d.system] || "?";
+            const code = Number(d.code) | 0;
+            const text = letter + code.toString(16).toUpperCase().padStart(4, "0");
+            const cls = "sys-" + letter.toLowerCase();
+            return `<span class="dtc-code ${cls}">${text}</span>`;
+          }).join("");
+          listEl.classList.add("has-codes");
+          listEl.innerHTML = html;
+        }
+        const ts = new Date(sample.timestamp_ms).toLocaleTimeString();
+        metaEl.textContent = `updated ${ts} · ${arr.length} active`;
+        return;
+      }
+      if (p.type !== "obd") return;
+
+      const { kind, value } = p;
+      const fmt = formatters[kind];
+      if (!fmt) return; // unknown pid — ignore for now
+      const el = document.getElementById("v-" + kind);
+      const tEl = document.getElementById("t-" + kind);
+      if (!el) return;
+      el.textContent = fmt(value);
+      el.parentElement.classList.remove("stale");
+      tEl.textContent = new Date(sample.timestamp_ms).toLocaleTimeString();
+      if (typeof value === "number" && Number.isFinite(value)) {
+        pushSample(kind, sample.timestamp_ms, value);
+        scheduleRender();
+      }
+    }
+    window.apply = apply;
+
+    function connect() {
+      const url = `ws://${location.host}/ws`;
+      setStatus("", "connecting…");
+      ws = new WebSocket(url);
+      ws.onopen = () => {
+        setStatus("on", "connected");
+        reconnectDelay = 500;
+      };
+      ws.onmessage = ev => {
+        try {
+          apply(JSON.parse(ev.data));
+        } catch (e) {
+          console.warn("bad sample", e, ev.data);
+        }
+      };
+      ws.onerror = () => setStatus("bad", "ws error");
+      ws.onclose = () => {
+        setStatus("warn", `reconnecting in ${reconnectDelay}ms`);
+        setTimeout(connect, reconnectDelay);
+        reconnectDelay = Math.min(reconnectDelay * 2, 8000);
+      };
+    }
+
+    initSparks();
+    connect();
+  </script>
+</body>
+</html>

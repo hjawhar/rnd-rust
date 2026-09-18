@@ -1,0 +1,27 @@
+.lock-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.lock-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.datetime-field {
+    margin-left: 1.5rem;
+
+    input {
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        border: 1px solid var(--table-border);
+        background: var(--table-header-bg);
+        color: var(--app-text-color);
+        font-size: 0.85rem;
+        width: 100%;
+    }
+}

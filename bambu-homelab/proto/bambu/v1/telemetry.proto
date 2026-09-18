@@ -1,0 +1,151 @@
+syntax = "proto3";
+
+package bambu.v1;
+
+message PrinterIdentity {
+  string printer_id = 1;
+  string name = 2;
+  string firmware_version = 3;
+  string model = 4;
+  string serial_number = 5;
+}
+
+message Temperature {
+  float current = 1;
+  float target = 2;
+}
+
+message TelemetrySnapshot {
+  PrinterIdentity printer = 1;
+  int64 timestamp_ms = 2;
+  PrinterState state = 3;
+  string gcode_state = 4;
+  Temperature nozzle_temp = 5;
+  Temperature bed_temp = 6;
+  Temperature chamber_temp = 7;
+  uint32 print_progress_pct = 8;
+  string current_file = 9;
+  uint32 eta_minutes = 10;
+  uint32 layer_num = 11;
+  uint32 total_layer_num = 12;
+  string subtask_name = 13;
+  uint32 part_fan_pct = 14;
+  uint32 aux_fan_pct = 15;
+  uint32 chamber_fan_pct = 16;
+  uint32 heatbreak_fan_pct = 17;
+  uint32 fan_gear = 18;
+  SpeedProfile speed_profile = 19;
+  uint32 speed_magnitude_pct = 20;
+  string wifi_signal = 21;
+  AmsStatus ams = 22;
+  repeated LightStatus lights = 23;
+  string rtsp_url = 24;
+  string nozzle_type = 25;
+  float nozzle_diameter = 26;
+  uint32 print_error = 27;
+  string error_code = 28;
+  XcamSettings xcam = 29;
+  bool sdcard_present = 30;
+  UpgradeState upgrade_state = 31;
+  repeated HmsAlert hms_alerts = 32;
+  NozzleInfo nozzle_info = 33;
+  BuildPlate build_plate = 34;
+  NetworkInfo network = 35;
+}
+
+enum PrinterState {
+  PRINTER_STATE_UNSPECIFIED = 0;
+  PRINTER_STATE_IDLE = 1;
+  PRINTER_STATE_PRINTING = 2;
+  PRINTER_STATE_PAUSED = 3;
+  PRINTER_STATE_ERROR = 4;
+  PRINTER_STATE_PREPARING = 5;
+  PRINTER_STATE_FINISHING = 6;
+  PRINTER_STATE_FINISHED = 7;
+  PRINTER_STATE_FAILED = 8;
+}
+
+enum SpeedProfile {
+  SPEED_PROFILE_UNSPECIFIED = 0;
+  SPEED_PROFILE_SILENT = 1;
+  SPEED_PROFILE_STANDARD = 2;
+  SPEED_PROFILE_SPORT = 3;
+  SPEED_PROFILE_LUDICROUS = 4;
+}
+
+message AmsStatus {
+  repeated AmsUnit units = 1;
+  string tray_now = 2;
+  string tray_tar = 3;
+  bool insert_flag = 4;
+  uint32 firmware_version = 5;
+}
+
+message AmsUnit {
+  string id = 1;
+  string humidity = 2;
+  float temperature = 3;
+  repeated AmsTray trays = 4;
+}
+
+message AmsTray {
+  string id = 1;
+  string filament_type = 2;
+  string color = 3;
+  string sub_brand = 4;
+  float nozzle_temp_min = 5;
+  float nozzle_temp_max = 6;
+  uint32 remain_pct = 7;
+  string tag_uid = 8;
+  float diameter = 9;
+  string drying_temp = 10;
+  string drying_time = 11;
+}
+
+message LightStatus {
+  string node = 1;
+  string mode = 2;
+}
+
+message XcamSettings {
+  bool spaghetti_detector = 1;
+  bool print_halt = 2;
+  bool first_layer_inspector = 3;
+  bool buildplate_marker_detector = 4;
+  bool printing_monitor = 5;
+}
+
+
+message UpgradeState {
+  string ota_version = 1;
+  string ams_version = 2;
+  string status = 3;
+  uint32 progress = 4;
+  bool force_upgrade = 5;
+  uint32 new_version_state = 6;
+  uint32 err_code = 7;
+  string module = 8;
+  string message = 9;
+}
+
+message HmsAlert {
+  uint32 attr = 1;
+  uint32 code = 2;
+  string description = 3;
+}
+
+message NozzleInfo {
+  string type = 1;
+  float diameter = 2;
+  uint32 wear = 3;
+}
+
+message BuildPlate {
+  uint32 base = 1;
+  uint32 material = 2;
+}
+
+message NetworkInfo {
+  string wifi_signal = 1;
+  string ip_address = 2;
+}

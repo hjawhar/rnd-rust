@@ -1,0 +1,17 @@
+[package]
+name = "monitored"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.83"
+env_logger = "0.11.5"
+futures = "0.3.31"
+log = "0.4.22"
+russh = "0.46.0"
+russh-keys = "0.46.0"
+tokio = { version = "1.41.1", features = ["full"] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133"
+tabled = "0.16.0"
+clap = { version = "4.5.21", features = ["derive"] }

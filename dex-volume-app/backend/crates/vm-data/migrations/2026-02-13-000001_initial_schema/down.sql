@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS uniswap_v4_pools;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS wallets;
+DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS users;

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Import Wallets</h2>
+<mat-dialog-content>
+    <form [formGroup]="importForm">
+        <div class="row mb-2">
+            <div class="col-12">
+                <div >Private keys</div>
+                <textarea matInput formControlName="pks" class="w-100"></textarea>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button type="button" [disabled]="importForm.invalid" (click)="importWallets()">Import</button>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

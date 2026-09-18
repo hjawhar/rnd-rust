@@ -1,0 +1,12 @@
+[package]
+name = "irc-testkit"
+description = "Test harness: in-process servers, scripted clients, deterministic clock, SMTP sink, DNSBL stubs."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,57 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/irc-proto",
+    "crates/irc-server",
+    "crates/irc-client-core",
+    "crates/irc-client-gui",
+    "crates/irc-bnc",
+    "crates/irc-cli",
+    "crates/irc-testkit",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+repository = "https://github.com/hjawhar/irc"
+authors = ["IRC Suite contributors"]
+
+# Workspace-wide lints. Individual crates inherit via `[lints] workspace = true`.
+# Additional per-crate rigor (e.g. `#![deny(missing_docs)]`) lives in that crate's
+# `lib.rs` / `main.rs` so it travels with the crate source, not the manifest.
+[workspace.lints.rust]
+unsafe_code = "forbid"
+rust_2018_idioms = { level = "warn", priority = -1 }
+unreachable_pub = "warn"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+# Pedantic allows that aren't worth enforcing across this codebase.
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+# Nursery false-positives we opt out of early; revisit periodically.
+option_if_let_else = "allow"
+# `pub(crate)` inside a private module is clearer than a bare `pub` that
+# happens to have the same effective visibility; prefer explicit scoping.
+redundant_pub_crate = "allow"
+# `missing_const_for_fn` reaches into trait-dispatched paths (e.g.
+# `Bytes: Deref`) that aren't const-friendly and produces impractical
+# suggestions; opt out at workspace level.
+missing_const_for_fn = "allow"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[profile.dev]
+# Keep dev builds fast; heavier optimization is reserved for release.
+opt-level = 0
+
+[profile.test]
+opt-level = 0

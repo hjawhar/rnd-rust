@@ -1,0 +1,44 @@
+# Perception — Test Configuration
+#
+# Test video file included:
+#   tests/fixtures/highway_traffic.mp4 — highway surveillance footage
+#
+# Switch [capture.path] to test each, or use your webcam:
+#   source = "camera", path = "0"
+#
+# Build with preview:  cargo build --release --features preview
+# Run:                 ./target/release/perception run
+
+[capture]
+source = "video"
+path = "tests/fixtures/highway_traffic.mp4"
+fps_limit = 30
+
+[pipeline]
+detection = true
+face_recognition = false
+ocr = false
+confidence_threshold = 0.3
+
+[pipeline.detection_config]
+model = "yolo26n"
+classes = []
+
+[pipeline.tracker_config]
+enabled = true
+max_age = 30
+iou_threshold = 0.3
+
+[storage]
+backend = "sqlite"
+sqlite_path = "./perception.db"
+crops_dir = "./crops/"
+save_crops = false
+
+[preview]
+enabled = true
+window_width = 1280
+
+[models]
+cache_dir = "./models/"
+auto_download = true

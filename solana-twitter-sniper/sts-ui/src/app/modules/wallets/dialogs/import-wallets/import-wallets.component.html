@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Import Wallets</h2>
+<mat-dialog-content>
+    <form [formGroup]="importForm">
+        <div>
+            <mat-label class="global-text-dark">Name</mat-label>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="global-text-dark">Comments</mat-label>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="comments">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="global-text-dark">Private keys</mat-label>
+            <div>
+                <textarea matInput formControlName="pks" class="w-100"></textarea>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button type="button" [disabled]="importForm.invalid" (click)="importWallets()">Import</button>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

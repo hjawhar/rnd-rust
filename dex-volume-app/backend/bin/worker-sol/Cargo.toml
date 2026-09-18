@@ -1,0 +1,61 @@
+[package]
+name = "worker-sol"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "worker_sol"
+path = "src/lib.rs"
+
+[[bin]]
+name = "worker-sol"
+path = "src/main.rs"
+
+[dependencies]
+dotenv.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+
+redis.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+vm-nats.workspace = true
+vm-redis.workspace = true
+async-nats.workspace = true
+bigdecimal.workspace = true
+
+solana-pubkey.workspace = true
+solana-keypair.workspace = true
+solana-signature.workspace = true
+solana-signer.workspace = true
+spl-associated-token-account.workspace = true
+solana-sdk.workspace = true
+solana-system-interface.workspace = true
+solana-commitment-config.workspace = true
+solana-native-token.workspace = true
+solana-rpc-client-api.workspace = true
+
+vm-solana.workspace = true
+
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+reqwest.workspace = true
+bs58.workspace = true
+
+solana-rpc-client.workspace = true
+vm-data.workspace = true
+futures.workspace = true
+yellowstone-grpc-proto.workspace = true
+rustls.workspace = true
+borsh.workspace = true
+spl-token.workspace = true
+chrono.workspace = true
+vm-volume.workspace = true
+dashmap.workspace = true
+yellowstone-grpc-client.workspace = true
+tonic.workspace = true
+tonic-health.workspace = true
+prost.workspace = true

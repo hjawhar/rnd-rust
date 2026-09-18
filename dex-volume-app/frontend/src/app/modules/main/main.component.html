@@ -1,0 +1,82 @@
+<div class="shell">
+    <aside class="sidebar">
+        <div class="sb-head">
+            <a class="brand" routerLink="projects">
+                <div class="brand-mark">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <span class="brand-name">Volume Maker</span>
+            </a>
+        </div>
+
+        <nav class="nav-group">
+            <a class="nv" routerLink="projects" routerLinkActive="on">
+                <i class="bi bi-folder2-open"></i>
+                <span>Projects</span>
+            </a>
+            <a class="nv" routerLink="users" routerLinkActive="on" *ngIf="isAdmin()">
+                <i class="bi bi-people"></i>
+                <span>Users</span>
+            </a>
+            <a class="nv" routerLink="subscriptions" routerLinkActive="on" *ngIf="isAdmin()">
+                <i class="bi bi-credit-card"></i>
+                <span>Subscriptions</span>
+            </a>
+            <a class="nv" routerLink="audit" routerLinkActive="on" *ngIf="isAdmin()">
+                <i class="bi bi-clock-history"></i>
+                <span>Audit</span>
+            </a>
+            <a class="nv" routerLink="workers" routerLinkActive="on" *ngIf="isAdmin()">
+                <i class="bi bi-hdd-rack"></i>
+                <span>Workers</span>
+            </a>
+        </nav>
+
+        <div class="sb-foot">
+            <div class="kv-grid">
+                <span class="kv-k">sol</span>
+                <span class="kv-v accent">${{(watcherService.solPrice ?? 0) | number:'1.2-2'}}</span>
+                <span class="kv-k">eth</span>
+                <span class="kv-v accent">${{(watcherService.ethPrice ?? 0) | number:'1.2-2'}}</span>
+
+                <div class="kv-sep"></div>
+
+                <span class="kv-k">sol/workers</span>
+                <span class="kv-v purple">{{systemStatus?.workers?.sol?.active ?? 0}}</span>
+                <span class="kv-k">evm/workers</span>
+                <span class="kv-v purple">{{systemStatus?.workers?.evm?.active ?? 0}}</span>
+
+                <div class="kv-sep"></div>
+
+                <span class="kv-k">app</span>
+                <span class="kv-v dim">v{{frontendVersion}}</span>
+                <span class="kv-k">api</span>
+                <span class="kv-v dim">{{backendVersion ? 'v' + backendVersion : '—'}}</span>
+            </div>
+
+            <div class="status-line"
+                 [class.healthy]="systemStatus?.health?.status === 'healthy'"
+                 [class.degraded]="systemStatus?.health?.status === 'degraded'"
+                 [class.offline]="!systemStatus || statusError">
+                <div class="st-dot"></div>
+                <span class="st-label">{{systemStatus?.health?.status ?? 'offline'}}</span>
+                <span class="st-pipe" *ngIf="pingMs !== null">|</span>
+                <span class="st-val" *ngIf="pingMs !== null">{{pingMs}}ms</span>
+            </div>
+
+            <div class="user-row" *ngIf="helperService.getWalletAddress()">
+                <span class="u-addr">{{addressAbrev(helperService.getWalletAddress()!)}}</span>
+                <button class="ib" (click)="themeService.toggleTheme()" [title]="themeService.currentTheme === 'dark' ? 'Light mode' : 'Dark mode'">
+                    <i class="bi" [class.bi-sun-fill]="themeService.currentTheme === 'dark'" [class.bi-moon-fill]="themeService.currentTheme === 'light'"></i>
+                </button>
+                <button class="ib" (click)="helperService.logout()" title="Logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

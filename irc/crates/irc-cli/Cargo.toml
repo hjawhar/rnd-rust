@@ -1,0 +1,16 @@
+[package]
+name = "irc-cli"
+description = "Headless ratatui IRC client used for smoke tests and ops."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "irc-cli"
+path = "src/main.rs"
+
+[lints]
+workspace = true

@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Assign Projects</h2>
+<mat-dialog-content>
+    <div *ngIf="loading" class="text-center p-3">Loading projects...</div>
+    <div *ngIf="!loading && projects.length === 0" class="text-center p-3">No projects found</div>
+    <div *ngIf="!loading && projects.length > 0" class="project-list">
+        <div *ngFor="let project of projects" class="project-item">
+            <mat-checkbox
+                [checked]="isOwner(project) || isGranted(project.id)"
+                [disabled]="isOwner(project) || toggling.has(project.id)"
+                (change)="toggleAccess(project)">
+                <span class="project-label">
+                    <strong>#{{project.id}}</strong>
+                    {{project.name || project.address}}
+                    <span class="badge" *ngIf="isOwner(project)">Owner</span>
+                    <span class="network-badge">{{project.network}}</span>
+                </span>
+            </mat-checkbox>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Close</button>
+</mat-dialog-actions>

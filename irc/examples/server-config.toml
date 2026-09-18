@@ -1,0 +1,77 @@
+# ────────────────────────────────────────────────────────────────────
+# irc-server reference configuration
+# ────────────────────────────────────────────────────────────────────
+#
+# Start the server:
+#   cargo run -p irc-server -- --config examples/server-config.toml
+#
+# Connect with any IRC client on localhost:6667:
+#   /server localhost 6667
+
+server_name  = "irc.local"
+network_name = "LocalNet"
+
+# Inline MOTD (or use motd_path for a file).
+motd = """
+Welcome to LocalNet!
+This is a development server running irc-server.
+"""
+
+# HMAC secret for IP cloaking. Generate a real one for production:
+#   openssl rand -hex 32
+cloak_secret = "dev-only-secret-change-in-production"
+
+# ── Listeners ─────────────────────────────────────────────────────
+
+[[listeners]]
+bind = "127.0.0.1:6667"
+tls  = false
+
+# Uncomment for TLS (generate a self-signed cert for dev):
+#   openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem \
+#     -days 365 -nodes -subj '/CN=irc.local'
+#
+# [[listeners]]
+# bind = "127.0.0.1:6697"
+# tls  = true
+# cert = "cert.pem"
+# key  = "key.pem"
+
+# ── Storage ───────────────────────────────────────────────────────
+
+[storage]
+# SQLite database for accounts, klines, chathistory.
+# Omit for an in-memory store (data lost on restart).
+sqlite_path = "irc-server.db"
+
+# ── Flood / abuse limits ──────────────────────────────────────────
+
+[limits]
+per_ip_max_connections         = 10
+per_ip_connect_rate_per_minute = 10
+registration_deadline_seconds  = 30
+messages_per_second            = 4
+messages_burst                 = 12
+global_max_connections         = 1000
+
+# ── Metrics ───────────────────────────────────────────────────────
+
+[metrics]
+enabled = true
+bind    = "127.0.0.1:9772"
+
+# ── Operators ─────────────────────────────────────────────────────
+#
+# Generate a password hash:
+#   cargo run -p irc-server -- hash-password
+# (not implemented yet — use a placeholder for dev)
+#
+# [[oper]]
+# name            = "admin"
+# password_hash   = "$argon2id$v=19$m=19456,t=2,p=1$..."
+# require_account = "admin"
+# allowed_hosts   = ["*!*@127.0.0.1"]
+# class           = "netadmin"
+#
+# [oper_class.netadmin]
+# privileges = ["kline", "kill", "samode", "rehash", "see-realhost"]

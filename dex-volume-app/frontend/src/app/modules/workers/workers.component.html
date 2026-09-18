@@ -1,0 +1,149 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Workers</h1>
+      <p class="page-subtitle">Active worker instances and their assigned tasks</p>
+    </div>
+    <button mat-stroked-button (click)="loadWorkers()">
+      <i class="bi bi-arrow-clockwise"></i> Refresh
+    </button>
+  </div>
+
+  @if (loading) {
+    <div class="empty-state">Loading workers...</div>
+  } @else {
+    <!-- SOL Workers -->
+    <div class="workers-section">
+      <h2 class="section-title">
+        <i class="bi bi-hdd-rack"></i> Solana Workers
+        <span class="badge">{{ workers.sol.length }} instance{{ workers.sol.length !== 1 ? 's' : '' }}</span>
+        <span class="badge">{{ getTotalProjects(workers.sol) }} task{{ getTotalProjects(workers.sol) !== 1 ? 's' : '' }}</span>
+      </h2>
+
+      @if (workers.sol.length === 0) {
+        <div class="empty-state">No Solana workers online</div>
+      }
+
+      @for (worker of workers.sol; track worker.worker_id) {
+        <div class="worker-card">
+          <div class="worker-header">
+            <div class="worker-id">
+              <span class="status-dot" [class.online]="worker.online" [class.offline]="!worker.online"></span>
+              <span class="mono-value">{{ worker.worker_id }}</span>
+            </div>
+            <span class="status-badge" [class.status-active]="worker.online" [class.status-inactive]="!worker.online">
+              {{ worker.online ? 'Online' : 'Offline' }}
+            </span>
+          </div>
+
+          @if (worker.projects.length === 0) {
+            <div class="worker-no-tasks">No assigned tasks</div>
+          } @else {
+            <div class="worker-tasks">
+              <table class="tasks-table">
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Status</th>
+                    <th>Generation</th>
+                    <th>Heartbeat</th>
+                    <th>Started</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (p of worker.projects; track p.project_id) {
+                    <tr>
+                      <td>
+                        <a [routerLink]="['/projects', p.project_id]" class="table-link">
+                          {{ p.name || 'Project #' + p.project_id }}
+                        </a>
+                      </td>
+                      <td>
+                        <span class="status-badge" [class.status-active]="p.status === 'running'" [class.status-inactive]="p.status !== 'running'">
+                          {{ p.status }}
+                        </span>
+                      </td>
+                      <td class="mono-value">{{ p.generation }}</td>
+                      <td>
+                        <span class="status-dot" [class.online]="p.heartbeat_alive" [class.offline]="!p.heartbeat_alive"></span>
+                        {{ p.heartbeat_alive ? 'Alive' : 'Dead' }}
+                      </td>
+                      <td>{{ formatTimestamp(p.started_at) | date:'short' }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- EVM Workers -->
+    <div class="workers-section">
+      <h2 class="section-title">
+        <i class="bi bi-hdd-rack"></i> EVM Workers
+        <span class="badge">{{ workers.evm.length }} instance{{ workers.evm.length !== 1 ? 's' : '' }}</span>
+        <span class="badge">{{ getTotalProjects(workers.evm) }} task{{ getTotalProjects(workers.evm) !== 1 ? 's' : '' }}</span>
+      </h2>
+
+      @if (workers.evm.length === 0) {
+        <div class="empty-state">No EVM workers online</div>
+      }
+
+      @for (worker of workers.evm; track worker.worker_id) {
+        <div class="worker-card">
+          <div class="worker-header">
+            <div class="worker-id">
+              <span class="status-dot" [class.online]="worker.online" [class.offline]="!worker.online"></span>
+              <span class="mono-value">{{ worker.worker_id }}</span>
+            </div>
+            <span class="status-badge" [class.status-active]="worker.online" [class.status-inactive]="!worker.online">
+              {{ worker.online ? 'Online' : 'Offline' }}
+            </span>
+          </div>
+
+          @if (worker.projects.length === 0) {
+            <div class="worker-no-tasks">No assigned tasks</div>
+          } @else {
+            <div class="worker-tasks">
+              <table class="tasks-table">
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Status</th>
+                    <th>Generation</th>
+                    <th>Heartbeat</th>
+                    <th>Started</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (p of worker.projects; track p.project_id) {
+                    <tr>
+                      <td>
+                        <a [routerLink]="['/projects', p.project_id]" class="table-link">
+                          {{ p.name || 'Project #' + p.project_id }}
+                        </a>
+                      </td>
+                      <td>
+                        <span class="status-badge" [class.status-active]="p.status === 'running'" [class.status-inactive]="p.status !== 'running'">
+                          {{ p.status }}
+                        </span>
+                      </td>
+                      <td class="mono-value">{{ p.generation }}</td>
+                      <td>
+                        <span class="status-dot" [class.online]="p.heartbeat_alive" [class.offline]="!p.heartbeat_alive"></span>
+                        {{ p.heartbeat_alive ? 'Alive' : 'Dead' }}
+                      </td>
+                      <td>{{ formatTimestamp(p.started_at) | date:'short' }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "bin/build_protos",
+    "bin/webapp",
+    "bin/axsys-sol-bot",
+    "crates/client",
+    "crates/models",
+]
+default-members = [
+    "bin/build_protos",
+    "bin/webapp",
+    "bin/axsys-sol-bot",
+    "crates/models",
+]

@@ -1,0 +1,60 @@
+# ────────────────────────────────────────────────────────────────────
+# irc-bnc reference configuration
+# ────────────────────────────────────────────────────────────────────
+#
+# Start the bouncer:
+#   cargo run -p irc-bnc -- --config examples/bnc-config.toml
+#
+# Connect your IRC client to the bouncer on localhost:6668:
+#   /server localhost 6668
+#   /pass alice/localnet:hunter2
+#
+# The bouncer connects upstream on your behalf and stays online
+# 24/7. When you reconnect, it replays missed messages with
+# server-time tags so your client shows correct timestamps.
+
+listen = "127.0.0.1:6668"
+
+# ── Users ─────────────────────────────────────────────────────────
+#
+# Each user has a name, password, and one or more upstream networks.
+# Auth format in the IRC client: PASS user/network:password
+
+[[users]]
+name     = "alice"
+password = "hunter2"
+
+  [[users.networks]]
+  name     = "localnet"
+  host     = "127.0.0.1"
+  port     = 6667
+  tls      = false
+  nick     = "alice"
+  user     = "alice"
+  realname = "Alice via BNC"
+
+# Add more networks per user:
+#
+#   [[users.networks]]
+#   name     = "libera"
+#   host     = "irc.libera.chat"
+#   port     = 6697
+#   tls      = true
+#   nick     = "alice"
+#   user     = "alice"
+#   realname = "Alice via BNC"
+
+# Add more users:
+#
+# [[users]]
+# name     = "bob"
+# password = "s3cret"
+#
+#   [[users.networks]]
+#   name     = "localnet"
+#   host     = "127.0.0.1"
+#   port     = 6667
+#   tls      = false
+#   nick     = "bob"
+#   user     = "bob"
+#   realname = "Bob via BNC"

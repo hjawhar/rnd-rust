@@ -1,0 +1,34 @@
+# Environment files — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.development
+
+# Rust build artifacts
+target/
+**/target/
+
+# Logs
+logs/
+*.log
+
+# Docker volume data
+redis_data/
+current_db/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+
+# Skills workspace
+.superpowers/

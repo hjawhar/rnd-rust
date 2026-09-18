@@ -1,0 +1,7 @@
+paddlepaddle==3.0.0-rc1
+paddleocr==2.9.1
+Flask
+waitress
+matplotlib
+numpy
+requests

@@ -1,0 +1,24 @@
+[package]
+name = "bambu-gateway"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bambu-gateway"
+path = "src/main.rs"
+
+[dependencies]
+bambu-shared = { workspace = true }
+async-nats = { workspace = true }
+nkeys = { workspace = true }
+tokio = { workspace = true }
+prost = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+config = { workspace = true }
+serde = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+futures-util = "0.3"

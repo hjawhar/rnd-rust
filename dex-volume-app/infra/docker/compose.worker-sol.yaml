@@ -1,0 +1,15 @@
+services:
+  worker_sol:
+    image: rust:1.90.0
+    container_name: worker_sol
+    working_dir: /home/worker_sol
+    command: "cargo run --release --bin worker-sol"
+    env_file:
+      - path: ../../.env
+        required: false
+    environment:
+      - APP_ENV=${APP_ENV:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-}  # Defaults per APP_ENV: dev=debug, prod=info
+    volumes:
+      - ../../backend:/home/worker_sol
+    restart: on-failure

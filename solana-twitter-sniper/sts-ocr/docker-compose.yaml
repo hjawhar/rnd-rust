@@ -1,0 +1,17 @@
+# services:
+#     ocr:
+#         image: python:3.11.11
+#         working_dir: /home/sts_ocr
+#         command: "python3 main.py"
+#         ports:
+#             - 6999:6999
+
+services:
+  ocr:
+    container_name: sts_ocr
+    build: .
+    ports:
+      - "6999:6999"
+    # volumes:
+    #     - ./:/home/sts_ocr
+    restart: on-failure

@@ -1,0 +1,40 @@
+export type Task = {
+    block_leaders: string | null,
+    enable_alerts: boolean,
+    frontrunning_protection: boolean,
+    id: number,
+    servers: string | null,
+    slippage: number,
+    tip: string,
+    tries: number,
+    twitter_handle: string | null,
+    twitter_id: string | null,
+    user_id: number,
+    value: string,
+    wallet_id: number,
+    selected_pool: string,
+    twitter_api: string,
+    twitter_strategy: string | null,
+    twitter_handle_checker: string | null,
+    twitter_token_override: string | null,
+    words: string | null
+}
+
+export type UpdateTaskPayload = {
+    wallet_id: number | null,
+    twitter_handle: string | null,
+    servers: string | null,
+    block_leaders: string | null,
+    value: number | null,
+    tip: number | null,
+    slippage: number,
+    tries: number,
+    frontrunning_protection: boolean,
+    enable_alerts: boolean,
+    selected_pool: string,
+    twitter_api: string,
+    twitter_strategy: string | null,
+    twitter_handle_checker: string | null,
+    twitter_token_override: string | null,
+    words: string | null
+}

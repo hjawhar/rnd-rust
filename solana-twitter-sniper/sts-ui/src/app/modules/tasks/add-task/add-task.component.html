@@ -1,0 +1,151 @@
+<form [formGroup]="taskConfiguration">
+    <div class="row mb-2">
+        <div class="col-12">
+            <a class="d-flex" routerLink="/tasks">
+                <i class="bi bi-arrow-left me-2" style="margin: 0.2rem;"></i>
+                <h4>Task {{id}} Configuration</h4>
+            </a>
+        </div>
+    </div>
+    <hr class="mt-2" />
+    <div class="row mb-2">
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Twitter handle</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="twitter_handle">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Twitter API</div>
+            <mat-form-field>
+                <mat-select formControlName="twitter_api">
+                    <mat-option *ngFor="let twitter_api of twitter_apis" [value]="twitter_api">
+                        {{twitter_api | titlecase}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Twitter strategy</div>
+            <mat-form-field>
+                <mat-select formControlName="twitter_strategy" [multiple]="true">
+                    <mat-option *ngFor="let twitter_strategy of twitter_strategies" [value]="twitter_strategy">
+                        {{twitter_strategy | titlecase}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Wallet</div>
+            <mat-form-field>
+                <mat-select formControlName="wallet_id">
+                    <mat-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.address}}
+                        ({{wallet.balance}} SOL)</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Pool</div>
+            <mat-form-field>
+                <mat-select formControlName="selected_pool">
+                    <mat-option *ngFor="let pool of pools" [value]="pool.id">{{pool.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Servers</div>
+            <mat-form-field>
+                <mat-select formControlName="servers" [multiple]="true">
+                    <mat-option *ngFor="let server of servers" [value]="server.id">{{server.id}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Block builders</div>
+            <mat-form-field>
+                <mat-select formControlName="block_leaders" [multiple]="true">
+                    <mat-option *ngFor="let block_leader of block_leaders"
+                        [value]="block_leader">{{block_leader}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2" *ngIf="displayTwitterHandleChecker()">
+            <div class="title">Twitter subhandle</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="twitter_handle_checker" type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-4 mb-2">
+            <div class="title">Token override</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="twitter_token_override" type="text">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <mat-label>Keywords</mat-label>
+            <mat-form-field class="words-field">
+                <mat-chip-grid #templateChipGrid formControlName="words">
+                    @for (keyword of templateKeywords(); track keyword) {
+                    <mat-chip-row (removed)="removeTemplateKeyword(keyword)">
+                        {{keyword}}
+                        <button matChipRemove [attr.aria-label]="'remove template form' + keyword">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip-row>
+                    }
+                </mat-chip-grid>
+                <input placeholder="New keyword..." [matChipInputFor]="templateChipGrid"
+                    (matChipInputTokenEnd)="addTemplateKeyword($event)" />
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Value</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="value" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Tip</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="tip" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Slippage</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="slippage" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Tries</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="tries" type="number">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <mat-checkbox formControlName="frontrunning_protection">Frontrunning Protection</mat-checkbox>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <mat-checkbox formControlName="enable_alerts">Enable alerts</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12 text-end">
+            <button mat-raised-button [disabled]="taskConfiguration.invalid" (click)="save()">
+                Save
+            </button>
+        </div>
+    </div>
+</form>

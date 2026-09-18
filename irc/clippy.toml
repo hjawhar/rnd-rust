@@ -1,0 +1,49 @@
+# Clippy configuration. Most lints are configured as attributes in the
+# workspace Cargo.toml; this file captures knob-tuned defaults.
+msrv = "1.85"
+
+# Extend the default `doc_markdown` valid-identifier list with IRC- and
+# ops-domain acronyms we expect to appear unquoted in doc comments.
+# The ".." literal is the clippy idiom for "keep the defaults too".
+doc-valid-idents = [
+    "..",
+    "IRC",
+    "IRCv3",
+    "mIRC",
+    "HexChat",
+    "Halloy",
+    "WeeChat",
+    "ZNC",
+    "EFNet",
+    "OFTC",
+    "Libera",
+    "RFC1459",
+    "RFC2812",
+    "RFC2813",
+    "TS6",
+    "SASL",
+    "DNSBL",
+    "HMAC",
+    "SQLite",
+    "PostgreSQL",
+    "Postgres",
+    "IPv4",
+    "IPv6",
+    "CIDR",
+    "CAPTCHA",
+    "PROXY",
+    "CTCP",
+    "DCC",
+    "TOML",
+    "MDI",
+    "Kubernetes",
+    "Grafana",
+    "Prometheus",
+    "MailHog",
+    "GHCR",
+    "OCI",
+    "SBOM",
+    "GitHub",
+    "JSON",
+    "YAML",
+]

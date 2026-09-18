@@ -1,0 +1,263 @@
+<div class="page-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Subscriptions</h1>
+            <p class="page-subtitle">Manage project billing and payments</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="showNewSubForm = !showNewSubForm">
+            <i class="bi bi-plus-lg me-2"></i>
+            New Subscription
+        </button>
+    </div>
+
+    <!-- New Subscription Form -->
+    <div class="info-card mb-4" *ngIf="showNewSubForm">
+        <div class="info-card-header">
+            <h3 class="info-card-title">Create Subscription</h3>
+        </div>
+        <div class="settings-card-body">
+            <div class="settings-card-fields">
+                <div class="compact-field">
+                    <label>Project</label>
+                    <select [(ngModel)]="newSubProjectId">
+                        <option [ngValue]="null" disabled>Select project...</option>
+                        <option *ngFor="let p of projectsWithoutSub" [ngValue]="p.id">
+                            #{{p.id}} - {{p.name || p.symbol || p.address.slice(0, 10)}}
+                        </option>
+                    </select>
+                </div>
+                <div class="compact-field">
+                    <label>Monthly Rate ($)</label>
+                    <input type="number" [(ngModel)]="newSubRate" placeholder="500">
+                </div>
+                <div class="compact-field">
+                    <label>Currency</label>
+                    <input type="text" [(ngModel)]="newSubCurrency" placeholder="USD">
+                </div>
+                <div class="compact-field">
+                    <label>First Due Date</label>
+                    <input type="date" [(ngModel)]="newSubDueDate">
+                </div>
+                <div class="compact-field">
+                    <label>Notes</label>
+                    <input type="text" [(ngModel)]="newSubNotes" placeholder="Optional notes">
+                </div>
+            </div>
+            <div class="settings-card-actions">
+                <span class="icon-btn-sm icon-btn-success" (click)="createSubscription()" title="Create">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+                <span class="icon-btn-sm icon-btn-danger" (click)="showNewSubForm = false" title="Cancel">
+                    <i class="bi bi-x-lg"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="sub-filter-tabs">
+        <span class="sub-filter-tab" [class.active]="filter === 'all'" (click)="setFilter('all')">
+            All ({{subscriptions.length}})
+        </span>
+        <span class="sub-filter-tab" [class.active]="filter === 'overdue'" (click)="setFilter('overdue')">
+            Overdue ({{overdueCount}})
+        </span>
+        <span class="sub-filter-tab" [class.active]="filter === 'active'" (click)="setFilter('active')">
+            Active
+        </span>
+        <span class="sub-filter-tab" [class.active]="filter === 'suspended'" (click)="setFilter('suspended')">
+            Suspended
+        </span>
+        <span class="sub-filter-tab" [class.active]="filter === 'cancelled'" (click)="setFilter('cancelled')">
+            Cancelled
+        </span>
+    </div>
+
+    <!-- Subscriptions Grid -->
+    <div class="sub-cards-grid" *ngIf="filteredSubscriptions.length > 0">
+        @for (item of filteredSubscriptions; track item.subscription.id) {
+        <div class="sub-card" [class.sub-card-overdue]="item.is_overdue">
+            <!-- Card Header -->
+            <div class="sub-card-header">
+                <div class="sub-card-project">
+                    <a [routerLink]="'/projects/' + item.project.id" class="sub-card-project-name">
+                        {{item.project.name || item.project.symbol || '#' + item.project.id}}
+                    </a>
+                    <span class="chain-icon" style="width: 16px; height: 16px;">
+                        <img *ngIf="item.project.network === 'solana'" src="./assets/images/solana.svg" alt="Solana"
+                            style="width:16px;" />
+                        <img *ngIf="item.project.network === 'base'" src="./assets/images/ethereum.svg" alt="Base"
+                            style="width:16px;" />
+                    </span>
+                </div>
+                <span class="subscription-status"
+                    [class.sub-active]="item.subscription.status === 'active' && !item.is_overdue"
+                    [class.sub-overdue]="item.is_overdue"
+                    [class.sub-suspended]="item.subscription.status === 'suspended'"
+                    [class.sub-cancelled]="item.subscription.status === 'cancelled'">
+                    <ng-container *ngIf="item.is_overdue">{{item.days_overdue}}d overdue</ng-container>
+                    <ng-container *ngIf="!item.is_overdue">{{item.subscription.status}}</ng-container>
+                </span>
+            </div>
+
+            <!-- Card Body (view mode) -->
+            <div class="sub-card-body" *ngIf="editSubId !== item.subscription.id">
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Monthly Rate</span>
+                    <span class="sub-card-value">${{item.subscription.monthly_rate}} {{item.subscription.currency}}</span>
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Next Payment</span>
+                    <span class="sub-card-value"
+                        [class.text-danger]="item.is_overdue">{{item.subscription.next_payment_due.secs_since_epoch
+                        * 1000 | date: 'dd MMM yyyy'}}</span>
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Started</span>
+                    <span
+                        class="sub-card-value">{{item.subscription.started_at.secs_since_epoch * 1000 | date: 'dd MMM yyyy'}}</span>
+                </div>
+                <div class="sub-card-row" *ngIf="item.subscription.notes">
+                    <span class="sub-card-label">Notes</span>
+                    <span class="sub-card-value" style="font-size: 0.8rem; opacity: 0.7;">{{item.subscription.notes}}</span>
+                </div>
+            </div>
+
+            <!-- Card Body (edit mode) -->
+            <div class="sub-card-body" *ngIf="editSubId === item.subscription.id">
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Rate ($)</span>
+                    <input type="number" [(ngModel)]="editRate" style="width: 100px; padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Currency</span>
+                    <input type="text" [(ngModel)]="editCurrency" style="width: 80px; padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Due Date</span>
+                    <input type="date" [(ngModel)]="editDueDate" style="padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Status</span>
+                    <select [(ngModel)]="editStatus" style="padding: 4px 8px;">
+                        <option value="active">Active</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Notes</span>
+                    <input type="text" [(ngModel)]="editNotes" style="width: 160px; padding: 4px 8px;"
+                        placeholder="Notes...">
+                </div>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="sub-card-actions">
+                <ng-container *ngIf="editSubId !== item.subscription.id">
+                    <button mat-stroked-button class="action-btn" (click)="toggleExpand(item.subscription.id)">
+                        <i class="bi bi-receipt me-1"></i>
+                        {{expandedSubId === item.subscription.id ? 'Hide' : 'Payments'}}
+                    </button>
+                    <button mat-stroked-button class="action-btn" (click)="togglePaymentForm(item.subscription.id)">
+                        <i class="bi bi-plus-circle me-1"></i>
+                        Record Payment
+                    </button>
+                    <button mat-stroked-button class="action-btn" (click)="startEdit(item)">
+                        <i class="bi bi-pencil me-1"></i>
+                        Edit
+                    </button>
+                    <button mat-stroked-button class="action-btn action-btn-danger"
+                        (click)="deleteSubscription(item.project.id)">
+                        <i class="bi bi-trash me-1"></i>
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="editSubId === item.subscription.id">
+                    <button mat-stroked-button class="action-btn" (click)="saveEdit(item.project.id)">
+                        <i class="bi bi-check-lg me-1"></i>
+                        Save
+                    </button>
+                    <button mat-stroked-button class="action-btn" (click)="cancelEdit()">
+                        <i class="bi bi-x-lg me-1"></i>
+                        Cancel
+                    </button>
+                </ng-container>
+            </div>
+
+            <!-- Record Payment Form (inline) -->
+            <div class="sub-card-body" style="border-top: 1px solid var(--border-color);"
+                *ngIf="showPaymentForm === item.subscription.id">
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Amount ($)</span>
+                    <input type="number" [(ngModel)]="newPaymentAmount" placeholder="500"
+                        style="width: 100px; padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Currency</span>
+                    <input type="text" [(ngModel)]="newPaymentCurrency" placeholder="USD"
+                        style="width: 80px; padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Paid At</span>
+                    <input type="date" [(ngModel)]="newPaymentDate" style="padding: 4px 8px;">
+                </div>
+                <div class="sub-card-row">
+                    <span class="sub-card-label">Notes</span>
+                    <input type="text" [(ngModel)]="newPaymentNotes" placeholder="Wire ref, tx hash..."
+                        style="width: 160px; padding: 4px 8px;">
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                    <button mat-raised-button color="primary" (click)="recordPayment(item.subscription.id)">
+                        <i class="bi bi-check-lg me-1"></i> Save Payment
+                    </button>
+                    <button mat-stroked-button (click)="showPaymentForm = null">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Payments History (expanded) -->
+            <div class="sub-card-body" style="border-top: 1px solid var(--border-color);"
+                *ngIf="expandedSubId === item.subscription.id">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="sub-card-label" style="font-weight: 600;">Payment History</span>
+                    <span class="sub-card-value" style="color: #22c55e;">Total: ${{totalPaid}}</span>
+                </div>
+                <div *ngIf="paymentsLoading" class="text-center" style="padding: 1rem;">
+                    <span class="text-muted">Loading...</span>
+                </div>
+                <div class="payments-list" *ngIf="!paymentsLoading">
+                    <div *ngIf="payments.length === 0" class="text-muted" style="padding: 0.5rem 0; font-size: 0.85rem;">
+                        No payments recorded yet
+                    </div>
+                    @for (payment of payments; track payment.id) {
+                    <div class="payment-item">
+                        <div>
+                            <span class="payment-amount">${{payment.amount}} {{payment.currency}}</span>
+                            <span class="payment-date ms-2">{{payment.paid_at.secs_since_epoch * 1000 | date: 'dd MMM
+                                yyyy'}}</span>
+                            <span class="payment-notes ms-2" *ngIf="payment.notes">{{payment.notes}}</span>
+                        </div>
+                        <button mat-icon-button class="action-btn-danger"
+                            (click)="voidPayment(item.subscription.id, payment.id)" title="Void payment"
+                            style="width: 28px; height: 28px; line-height: 28px;">
+                            <i class="bi bi-x-circle" style="font-size: 14px;"></i>
+                        </button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredSubscriptions.length === 0">
+        <div class="empty-icon">
+            <i class="bi bi-credit-card"></i>
+        </div>
+        <h3>No Subscriptions</h3>
+        <p *ngIf="filter === 'all'">Create your first subscription to start tracking payments</p>
+        <p *ngIf="filter !== 'all'">No subscriptions match the "{{filter}}" filter</p>
+    </div>
+</div>

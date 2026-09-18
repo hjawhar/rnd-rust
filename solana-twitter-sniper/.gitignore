@@ -1,0 +1,37 @@
+# Environment files (contain secrets)
+.env
+.env.*
+!.env.example
+
+# Rust
+**/target/
+**/*.rs.bk
+Cargo.lock
+
+# Node
+**/node_modules/
+**/dist/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+**/logs/
+
+# Database
+**/current_db/

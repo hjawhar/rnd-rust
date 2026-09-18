@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12 text-center d-flex">
+            <div class="mt-0 mb-0 m-auto">
+                <div class="d-flex align-content-center align-items-center">
+                    <img style="height: 50px;" src="./assets/images/logo.png" />
+                    <span class="theme-color ms-2" style="font-size: 3rem;">X</span><span
+                        class="global-text-light me-2" style="font-size: 1.5rem;">ECUTIONER</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="isMetaMaskClicked">
+        <div class="p-2 text-center">
+            <p class="global-text-light mb-1">Your selected wallet is</p>
+            <p class="global-text-light fw-bold mb-2">{{helperService.getWalletAddress()}}</p>
+        </div>
+    </ng-container>
+
+    <div class="mb-4">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <button mat-raised-button (click)="!isMetaMaskClicked ? onMetamaskLogin() : onClickLogin()">
+                <div class="d-flex flex-row align-items-center justify-content-center">
+                    <img src="/assets/images/metamask.png" class="me-2" style="height: 30px;" />
+                    Authenticate
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="row global-text-light" *ngIf="!helperService.getWalletAddress()">
+        <div class="col-12 text-center">
+            <h6>To get started. please connect a wallet</h6>
+        </div>
+    </div>
+</div>

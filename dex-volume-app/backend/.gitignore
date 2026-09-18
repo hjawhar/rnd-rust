@@ -1,0 +1,11 @@
+/target
+/logs
+
+**/target
+logs
+redis_data
+current_db
+
+# Environment-specific config (may contain secrets)
+# .env.production
+# .env.staging

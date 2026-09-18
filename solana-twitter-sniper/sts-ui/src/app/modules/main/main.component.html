@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <img class="logo" src="./assets/images/logo.png" />
+    <span class="theme-color txt-lg ms-2">X</span><span class="global-text-light me-2">ECUTIONER</span>
+    <a class="navlink" routerLink="tasks">Tasks</a>
+    <a class="navlink" routerLink="manual-buy">Buy/Sell</a>
+    <a class="navlink" routerLink="wallets">Wallets</a>
+    <a class="navlink" routerLink="users">Users</a>
+    <span class="h-spacer"></span>
+    <div class="wallet-address" *ngIf="helperService.getWalletAddress()">
+        <i class="bi bi-person"></i>
+        {{addressAbrev(helperService.getWalletAddress()!)}}
+    </div>
+    <span><img class="logo-sm me-1" src="./assets/images/solana.svg" />{{watcherService.slotNumber}}</span>
+    <span class="ms-2" (click)="helperService.logout()"><i class="bi bi-door-open"></i></span>
+</mat-toolbar>
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

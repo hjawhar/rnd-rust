@@ -1,0 +1,228 @@
+@use '@angular/material' as mat;
+@use "../public/assets/styles/style.scss" as *;
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "tailwindcss";
+
+// Define custom dark theme palettes
+$dark-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 400, 300, 600);
+$dark-accent: mat.m2-define-palette(mat.$m2-teal-palette, A200, A100, A400);
+$dark-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Create the dark theme
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
+
+// Include Angular Material core and theme
+@include mat.core();
+@include mat.all-component-themes($dark-theme);
+
+// Global styles
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--app-bg-color);
+    color: var(--app-text-color);
+}
+
+// Override Bootstrap for dark theme
+.container-fluid,
+.container {
+    background-color: transparent;
+}
+
+// Material component dark theme overrides
+.mat-mdc-dialog-container {
+    --mdc-dialog-container-color: var(--app-card-bg) !important;
+    --mdc-dialog-supporting-text-color: var(--app-text-color) !important;
+
+    .mdc-dialog__title,
+    .mat-mdc-dialog-title,
+    h2[mat-dialog-title] {
+        color: var(--app-text-color) !important;
+    }
+
+    .mdc-dialog__content,
+    .mat-mdc-dialog-content,
+    mat-dialog-content {
+        color: var(--app-text-color) !important;
+
+        div, span, p, label {
+            color: var(--app-text-color);
+        }
+
+        input, select, textarea {
+            color: var(--app-text-color) !important;
+            background-color: var(--app-input-bg) !important;
+            border-color: var(--app-border-color) !important;
+        }
+    }
+
+    .mat-mdc-dialog-actions,
+    mat-dialog-actions {
+        button {
+            color: var(--app-text-color);
+        }
+    }
+}
+
+.mat-mdc-snack-bar-container {
+    --mdc-snackbar-container-color: var(--app-card-bg);
+    --mdc-snackbar-supporting-text-color: var(--app-text-color);
+}
+
+.mat-mdc-menu-panel {
+    background-color: var(--app-card-bg) !important;
+
+    .mat-mdc-menu-item {
+        color: var(--app-text-color) !important;
+
+        .mat-mdc-menu-item-text {
+            color: var(--app-text-color) !important;
+        }
+    }
+}
+
+.mat-mdc-select-panel {
+    background-color: var(--app-card-bg) !important;
+
+    .mat-mdc-option {
+        color: var(--app-text-color) !important;
+    }
+}
+
+// Table styling
+.mat-mdc-table {
+    background-color: transparent !important;
+
+    .mat-mdc-header-row {
+        background-color: var(--app-navbar-color);
+    }
+
+    .mat-mdc-row {
+        background-color: transparent;
+
+        &:hover {
+            background-color: var(--table-row-hover);
+        }
+    }
+
+    .mat-mdc-header-cell,
+    .mat-mdc-cell {
+        color: var(--app-text-color);
+        border-bottom-color: var(--app-border-color);
+    }
+}
+
+// Toolbar styling
+.mat-toolbar {
+    background-color: var(--app-navbar-color) !important;
+    color: var(--app-text-color) !important;
+}
+
+// Card styling
+.mat-mdc-card {
+    background-color: var(--app-card-bg) !important;
+    color: var(--app-text-color) !important;
+}
+
+// Form field styling
+.mat-mdc-form-field {
+    .mdc-text-field--filled {
+        background-color: var(--app-input-bg) !important;
+    }
+
+    .mat-mdc-input-element {
+        color: var(--app-text-color) !important;
+    }
+
+    .mat-mdc-floating-label {
+        color: var(--app-text-muted) !important;
+    }
+}
+
+// Button overrides
+.mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: var(--theme-color);
+    --mdc-protected-button-label-text-color: #fff;
+}
+
+.mat-mdc-raised-button.mat-accent {
+    --mdc-protected-button-container-color: var(--app-accent-color);
+    --mdc-protected-button-label-text-color: #000;
+}
+
+// Checkbox/Radio styling
+.mat-mdc-checkbox,
+.mat-mdc-radio-button {
+    --mdc-checkbox-unselected-icon-color: var(--app-text-muted);
+    --mdc-radio-unselected-icon-color: var(--app-text-muted);
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--app-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--app-border-color);
+    border-radius: 4px;
+
+    &:hover {
+        background: var(--app-text-muted);
+    }
+}
+
+// Selection color
+::selection {
+    background-color: var(--theme-color);
+    color: #000;
+}
+
+// Global text classes
+.global-text-light {
+    color: var(--app-text-color) !important;
+}
+
+.text-muted {
+    color: var(--app-text-muted) !important;
+}
+
+// Status colors
+.status-success {
+    color: var(--app-success-color) !important;
+}
+
+.status-danger {
+    color: var(--app-danger-color) !important;
+}
+
+.status-warning {
+    color: var(--app-warning-color) !important;
+}
+
+// Background utility classes
+.bg-card {
+    background-color: var(--app-card-bg) !important;
+}
+
+.bg-dark {
+    background-color: var(--app-bg-color) !important;
+}
+
+.bg-navbar {
+    background-color: var(--app-navbar-color) !important;
+}

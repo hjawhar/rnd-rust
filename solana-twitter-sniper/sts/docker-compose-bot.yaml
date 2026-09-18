@@ -1,0 +1,11 @@
+services:
+    bot:
+        image: rust:1.83.0
+        container_name: sts_bot
+        working_dir: /home/sts_bot
+        command: "cargo run --release --bin axsys-sol-bot"
+        volumes:
+            - ./:/home/sts_bot
+        restart: on-failure
+        ports:
+            - 3001:3001

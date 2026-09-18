@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-xl-9 col-lg-9 col-md-9 col-12 mb-2">
+        <div class="row upper-part">
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 d-flex">
+                <h4 class="m-0">Logs</h4>
+                <span class="h-spacer"></span>
+                <div class="d-flex align-content-center align-items-center cursor-pointer" (click)="clearLogs()">
+                    <i class="bi bi-x global-text-light" style="font-size: 1rem;"></i>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-2" />
+        <div class="row scrollable-logs-container" *ngIf="logs.length > 0">
+            <div class="col-12">
+                <ng-container *ngFor="let current_logs of logs; let last = last" class="title">
+                    <div class="title">
+                        <div class="d-flex"
+                            *ngIf="(current_logs.logs.tx_hash || current_logs.logs.bundle_hash) && current_logs.logs.confirmed">
+                            <span *ngIf="current_logs.logs.tx_hash">
+                                Tx hash:
+                                <a [href]="'https://solscan.io/tx/'+current_logs.logs.tx_hash" target="_blank">
+                                    here
+                                </a>
+                            </span>
+                            <span class="ms-2 me-2"
+                                *ngIf="current_logs.logs.tx_hash && current_logs.logs.bundle_hash">-</span>
+                            <span *ngIf="current_logs.logs.bundle_hash">
+                                Bundle hash:
+                                <a [href]="'https://explorer.jito.wtf/bundle/'+current_logs.logs.bundle_hash"
+                                    target="_blank">
+                                    here
+                                </a>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="timestamp me-1">[{{current_logs.server}}]
+                                [{{current_logs.logs.timestamp |
+                                date: 'hh:mm:ss:SSS'}}]</span>
+                            <span [innerHTML]="current_logs.logs.text"></span>
+                        </div>
+                    </div>
+                    <hr *ngIf="!last" class="mb-2 mt-2" />
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+        <div class="row">
+            <div class="col-12 d-flex">
+                <h4 class="m-0">Tweets</h4>
+                <span class="h-spacer"></span>
+                <div class="d-flex align-content-center align-items-center cursor-pointer" (click)="clearTweets()">
+                    <i class="bi bi-x global-text-light" style="font-size: 1rem;"></i>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-2" />
+        <div class="row scrollable-tweet-container" *ngIf="tweets.length > 0">
+            <div class="col-12">
+                <ng-container *ngFor="let current_tweet of tweets; let last = last" class="title">
+                    <div class="title">
+                        <div>
+                            <span class="timestamp">[{{current_tweet.server}}] [{{current_tweet.tweet.timestamp
+                                |
+                                date: 'hh:mm:ss:SSS'}}]</span>
+                            at {{current_tweet.tweet.slot}}
+                        </div>
+                        <div>
+                            Created at {{current_tweet.tweet.tweet.created_at | date: 'hh:mm:ss:SSS'}}
+                        </div>
+                        <div>
+                            Reference:
+                            <a [href]="'https://x.com/'+current_tweet.tweet.tweet.author.handle +'/status/'+current_tweet.tweet.tweet.id"
+                                target="_blank">
+                                here
+                            </a>
+                        </div>
+                        <div class="d-flex">
+                            <div class="me-2">{{current_tweet.tweet.tweet.author.handle}}:</div>
+                            <div [innerHTML]="current_tweet.tweet.tweet.body.text" class="text-break"></div>
+                        </div>
+                        <div *ngFor="let img of current_tweet.tweet.tweet.media.images">
+                            <img [src]="img" style="max-height: 200px; max-width: 250px;">
+                        </div>
+                    </div>
+                    <hr *ngIf="!last" />
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<audio controls class="d-none" #twitterAudio>
+    <source src="./sounds/default.mp3" />
+</audio>
+
+<audio controls class="d-none" #confirmedAudio>
+    <source src="./sounds/confirmed.mp3" />
+</audio>
+
+<audio controls class="d-none" #sendingAudio>
+    <source src="./sounds/sending.mp3" />
+</audio>

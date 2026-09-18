@@ -1,0 +1,18 @@
+/target
+
+# SQLite runtime files
+*.db
+*.db-shm
+*.db-wal
+
+# Model cache
+/models/*.onnx
+
+# Image crops
+/crops/
+
+# Editor / OS
+.DS_Store
+*.swp
+*.swo
+*~

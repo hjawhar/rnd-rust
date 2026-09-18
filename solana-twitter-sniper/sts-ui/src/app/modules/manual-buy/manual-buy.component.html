@@ -1,0 +1,89 @@
+<form [formGroup]="taskConfiguration">
+    <div class="row mb-2">
+        <div class="col-12">
+            <h4 class="m-0">Buy/Sell</h4>
+        </div>
+    </div>
+    <hr class="mt-2" />
+    <div class="row">
+        <div class="col-12">
+            <div class="title">Mint address</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="mint_address" type="text">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="title">Wallet</div>
+            <mat-form-field>
+                <mat-select formControlName="wallet_id">
+                    <mat-option *ngFor="let wallet of wallets" [value]="wallet.id">{{wallet.address}}
+                        ({{wallet.balance}} SOL)</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-6">
+            <div class="title">Servers</div>
+            <mat-form-field>
+                <mat-select formControlName="servers" [multiple]="true">
+                    <mat-option *ngFor="let server of servers" [value]="server.id">{{server.id}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <div class="title">Block builders</div>
+            <mat-form-field>
+                <mat-select formControlName="block_leaders" [multiple]="true">
+                    <mat-option *ngFor="let block_leader of block_leaders"
+                        [value]="block_leader">{{block_leader}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Value</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="value" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Tip</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="tip" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Slippage</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="slippage" type="number">
+            </mat-form-field>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="title">Tries</div>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="tries" type="number">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <mat-checkbox formControlName="frontrunning_protection">Frontrunning Protection</mat-checkbox>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <mat-checkbox formControlName="enable_alerts">Enable alerts</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12 text-end">
+            <button mat-raised-button [disabled]="taskConfiguration.invalid" (click)="triggerBuy()">
+                Buy
+            </button>
+        </div>
+    </div>
+</form>

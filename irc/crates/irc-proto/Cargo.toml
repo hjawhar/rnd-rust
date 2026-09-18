@@ -1,0 +1,21 @@
+[package]
+name = "irc-proto"
+description = "IRC protocol primitives: parser, serializer, codec, numerics, modes, formatting."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+bytes = "1"
+smallvec = { version = "1", features = ["union"] }
+thiserror = "1"
+tokio-util = { version = "0.7", features = ["codec"] }
+
+[dev-dependencies]
+proptest = "1"
+
+[lints]
+workspace = true

@@ -1,0 +1,14 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+/.angular
+
+# IDE
+.idea
+*.swp
+*.swo
+
+# Misc
+.DS_Store

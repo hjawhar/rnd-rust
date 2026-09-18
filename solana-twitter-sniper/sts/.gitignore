@@ -1,0 +1,10 @@
+# Environment files (contain secrets)
+.env
+.env.*
+!.env.example
+
+/target
+current_db
+/logs
+/**/logs
+/bin/**/logs

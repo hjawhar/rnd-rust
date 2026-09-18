@@ -1,0 +1,135 @@
+//! In-memory pool index: token graph for route discovery.
+//!
+//! Stores pools as `Box<dyn Market>` and maintains an adjacency list
+//! mapping each token mint to the pools it participates in.
+
+use std::collections::HashMap;
+
+use solana_pubkey::Pubkey;
+use thunder_core::GenericError;
+
+use crate::types::PoolEntry;
+
+/// Edge in the token graph: connects to `other_mint` via `pool_address`.
+#[derive(Debug, Clone)]
+struct Edge {
+    other_mint: Pubkey,
+    pool_address: String,
+}
+
+/// In-memory index of all loaded pools, organized as a token-pair graph.
+pub struct PoolIndex {
+    /// Pool address -> PoolEntry (owns the Market trait object).
+    pools: HashMap<String, PoolEntry>,
+    /// Mint -> list of edges to other mints via pools.
+    edges: HashMap<Pubkey, Vec<Edge>>,
+    /// Per-DEX pool counts for statistics.
+    dex_counts: HashMap<String, usize>,
+}
+
+impl PoolIndex {
+    pub fn new() -> Self {
+        Self {
+            pools: HashMap::new(),
+            edges: HashMap::new(),
+            dex_counts: HashMap::new(),
+        }
+    }
+
+    /// Insert a pool into the index. Uses pre-resolved mints from the entry
+    /// to build bidirectional edges in the token graph.
+    pub fn add_pool(&mut self, address: String, entry: PoolEntry) -> Result<(), GenericError> {
+        // Bidirectional edges: quote_mint <-> base_mint via this pool.
+        self.edges
+            .entry(entry.quote_mint)
+            .or_default()
+            .push(Edge {
+                other_mint: entry.base_mint,
+                pool_address: address.clone(),
+            });
+        self.edges
+            .entry(entry.base_mint)
+            .or_default()
+            .push(Edge {
+                other_mint: entry.quote_mint,
+                pool_address: address.clone(),
+            });
+
+        *self.dex_counts.entry(entry.dex_name.clone()).or_insert(0) += 1;
+        self.pools.insert(address, entry);
+        Ok(())
+    }
+
+    /// Look up a pool by address.
+    pub fn get_pool(&self, address: &str) -> Option<&PoolEntry> {
+        self.pools.get(address)
+    }
+
+    /// All (other_mint, pool_address) pairs reachable from `mint` in one hop.
+    pub fn neighbors(&self, mint: &Pubkey) -> Vec<(Pubkey, String)> {
+        self.edges
+            .get(mint)
+            .map(|edges| {
+                edges
+                    .iter()
+                    .map(|e| (e.other_mint, e.pool_address.clone()))
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    /// Number of edges (pools) incident to `mint`. Cheap; used to detect
+    /// hub-degree mints whose full adjacency is too large to materialize.
+    pub fn neighbor_count(&self, mint: &Pubkey) -> usize {
+        self.edges.get(mint).map_or(0, |e| e.len())
+    }
+
+    /// Borrowed iterator over `(other_mint, pool_address)` for `mint`.
+    /// Unlike `neighbors`, this clones nothing — callers iterate and early-break.
+    pub fn neighbors_iter(&self, mint: &Pubkey) -> impl Iterator<Item = (Pubkey, &str)> {
+        self.edges
+            .get(mint)
+            .into_iter()
+            .flatten()
+            .map(|e| (e.other_mint, e.pool_address.as_str()))
+    }
+
+    /// All pools that directly connect `mint_a` and `mint_b`.
+    pub fn direct_pools(&self, mint_a: &Pubkey, mint_b: &Pubkey) -> Vec<String> {
+        self.edges
+            .get(mint_a)
+            .map(|edges| {
+                edges
+                    .iter()
+                    .filter(|e| e.other_mint == *mint_b)
+                    .map(|e| e.pool_address.clone())
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    /// Total number of pools in the index.
+    pub fn pool_count(&self) -> usize {
+        self.pools.len()
+    }
+
+    /// Number of unique token mints in the graph.
+    pub fn unique_mints(&self) -> usize {
+        self.edges.len()
+    }
+
+    /// Per-DEX pool counts.
+    pub fn dex_counts(&self) -> &HashMap<String, usize> {
+        &self.dex_counts
+    }
+
+    /// All mints that have at least one pool (for iteration).
+    pub fn all_mints(&self) -> Vec<Pubkey> {
+        self.edges.keys().copied().collect()
+    }
+
+    /// Iterate over all (address, PoolEntry) pairs.
+    pub fn iter_pools(&self) -> impl Iterator<Item = (&str, &PoolEntry)> {
+        self.pools.iter().map(|(k, v)| (k.as_str(), v))
+    }
+}

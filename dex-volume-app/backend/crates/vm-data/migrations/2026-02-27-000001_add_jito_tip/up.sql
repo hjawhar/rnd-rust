@@ -1,0 +1,1 @@
+ALTER TABLE projects ADD COLUMN jito_tip DOUBLE PRECISION;

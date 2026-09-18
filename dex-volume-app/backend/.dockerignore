@@ -1,0 +1,9 @@
+.github
+logs
+redis_data
+current_db
+
+/target
+/logs
+
+**/target

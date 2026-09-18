@@ -1,0 +1,13 @@
+[package]
+name = "downloader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bytes-stream = "0.0.3"
+fs = "0.0.5"
+futures = "0.3.31"
+indicatif = "0.17.8"
+reqwest = { version = "0.12.9", features = ["json", "stream"] }
+tokio = { version = "1.41.1", features = ["full"] }
+tokio-util = "0.7.12"

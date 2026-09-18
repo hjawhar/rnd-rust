@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Generate Wallets</h2>
+<mat-dialog-content>
+    <form [formGroup]="generateForm">
+        <div>
+            <mat-label class="global-text-dark">Name</mat-label>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="global-text-dark">Comments</mat-label>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="comments">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="global-text-dark">Number</mat-label>
+            <mat-form-field class="w-100">
+                <input matInput formControlName="value">
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button type="button" [disabled]="generateForm.invalid" (click)="generate()">Generate</button>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

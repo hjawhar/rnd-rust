@@ -1,0 +1,123 @@
+<div class="page-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Audit Logs</h1>
+            <p class="page-subtitle">Track user actions across all projects</p>
+        </div>
+    </div>
+
+    <!-- Filters Toolbar -->
+    <div class="table-toolbar">
+        <div class="table-filter">
+            <i class="bi bi-search"></i>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search logs..." #input>
+        </div>
+
+        <div class="filter-controls">
+            <mat-form-field appearance="outline" class="filter-select">
+                <mat-label>User</mat-label>
+                <mat-select [(ngModel)]="filterUserId" (selectionChange)="onFilterChange()">
+                    <mat-option [value]="null">All Users</mat-option>
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        #{{user.id}} - {{user.address.slice(0, 5)}}...{{user.address.slice(-5)}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="filter-select">
+                <mat-label>Project</mat-label>
+                <mat-select [(ngModel)]="filterProjectId" (selectionChange)="onFilterChange()">
+                    <mat-option [value]="null">All Projects</mat-option>
+                    <mat-option *ngFor="let project of projects" [value]="project.id">
+                        #{{project.id}} - {{project.name || project.symbol || project.address.slice(0, 10)}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-stroked-button class="clear-filters-btn" (click)="clearFilters()"
+                *ngIf="filterUserId !== null || filterProjectId !== null">
+                <i class="bi bi-x-circle me-1"></i>
+                Clear
+            </button>
+        </div>
+    </div>
+
+    <!-- Audit Logs Table -->
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 70px;"> ID </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="mono-value">#{{element.id}}</span>
+                </td>
+            </ng-container>
+
+            <!-- User Column -->
+            <ng-container matColumnDef="user_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 160px;"> User </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="mono-value">{{getUserLabel(element.user_id)}}</span>
+                </td>
+            </ng-container>
+
+            <!-- Project Column -->
+            <ng-container matColumnDef="project_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 160px;"> Project </th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.project_id">{{getProjectLabel(element.project_id)}}</span>
+                    <span class="text-muted" *ngIf="!element.project_id">-</span>
+                </td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 180px;"> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="action-badge">
+                        <i class="bi {{getActionIcon(element.action)}} me-1"></i>
+                        {{getActionLabel(element.action)}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <!-- Details Column -->
+            <ng-container matColumnDef="details">
+                <th mat-header-cell *matHeaderCellDef> Details </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="details-value" [title]="formatDetails(element.details)">
+                        {{formatDetails(element.details)}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <!-- Timestamp Column -->
+            <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 180px;"> Timestamp </th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="last-login">
+                        <i class="bi bi-clock me-1"></i>
+                        {{element.created_at.secs_since_epoch * 1000 | date: 'dd MMM yyyy, HH:mm:ss'}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- No Data Row -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell no-data-cell" colspan="100">
+                    <i class="bi bi-clock-history"></i>
+                    <span *ngIf="!loading">No audit logs found</span>
+                    <span *ngIf="loading">Loading...</span>
+                </td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 100]"
+            aria-label="Select page of audit logs"></mat-paginator>
+    </div>
+</div>

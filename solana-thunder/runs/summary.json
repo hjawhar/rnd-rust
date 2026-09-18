@@ -1,0 +1,240 @@
+{
+  "run_file": "runs/post-a0.jsonl",
+  "generated_ts": 1783956073,
+  "total_cases": 210,
+  "tie_band_bps": 1.0,
+  "vs_jupiter_restricted": {
+    "comparable": 115,
+    "win": 23,
+    "tie": 48,
+    "loss": 44,
+    "win_rate": 0.2,
+    "mean_delta_bps": -1779.7842984288093,
+    "median_delta_bps": 0.0,
+    "ours_no_route": 38,
+    "jup_no_route": 9,
+    "both_no_route": 48,
+    "errors": 0
+  },
+  "vs_jupiter_unrestricted": {
+    "comparable": 115,
+    "win": 22,
+    "tie": 30,
+    "loss": 63,
+    "win_rate": 0.19130434782608696,
+    "mean_delta_bps": -1780.831106384592,
+    "median_delta_bps": -1.462821974064109,
+    "ours_no_route": 38,
+    "jup_no_route": 9,
+    "both_no_route": 48,
+    "errors": 0
+  },
+  "matrix_vs_restricted": [
+    {
+      "liquidity_tier": "major",
+      "usd_size": 0.1,
+      "win": 1,
+      "tie": 4,
+      "loss": 3,
+      "other": 2
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 1.0,
+      "win": 0,
+      "tie": 6,
+      "loss": 2,
+      "other": 2
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 10.0,
+      "win": 1,
+      "tie": 5,
+      "loss": 2,
+      "other": 2
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 100.0,
+      "win": 0,
+      "tie": 6,
+      "loss": 2,
+      "other": 2
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 1000.0,
+      "win": 0,
+      "tie": 5,
+      "loss": 3,
+      "other": 2
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 10000.0,
+      "win": 0,
+      "tie": 5,
+      "loss": 2,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "major",
+      "usd_size": 100000.0,
+      "win": 0,
+      "tie": 2,
+      "loss": 4,
+      "other": 4
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 0.1,
+      "win": 1,
+      "tie": 3,
+      "loss": 3,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 1.0,
+      "win": 1,
+      "tie": 2,
+      "loss": 4,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 10.0,
+      "win": 1,
+      "tie": 3,
+      "loss": 3,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 100.0,
+      "win": 1,
+      "tie": 2,
+      "loss": 4,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 1000.0,
+      "win": 2,
+      "tie": 2,
+      "loss": 3,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 10000.0,
+      "win": 1,
+      "tie": 2,
+      "loss": 4,
+      "other": 3
+    },
+    {
+      "liquidity_tier": "mid",
+      "usd_size": 100000.0,
+      "win": 0,
+      "tie": 1,
+      "loss": 5,
+      "other": 4
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 0.1,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 1.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 10.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 100.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 1000.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 10000.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    },
+    {
+      "liquidity_tier": "tail",
+      "usd_size": 100000.0,
+      "win": 2,
+      "tie": 0,
+      "loss": 0,
+      "other": 8
+    }
+  ],
+  "latency_ms": {
+    "jup_restricted_rtt_ms (network HTTP)": {
+      "n": 210,
+      "p50": 115.263583,
+      "p95": 205.24675,
+      "mean": 127.03488516666664
+    },
+    "jup_restricted_server_ms (self-reported)": {
+      "n": 153,
+      "p50": 0.438625,
+      "p95": 17.616501,
+      "mean": 2.8794323529411763
+    },
+    "jup_unrestricted_rtt_ms (network HTTP)": {
+      "n": 210,
+      "p50": 118.043666,
+      "p95": 229.245291,
+      "mean": 136.96156029523814
+    },
+    "ours_rtt_ms (localhost HTTP)": {
+      "n": 210,
+      "p50": 60.339541,
+      "p95": 136.05462500000002,
+      "mean": 59.27883789047619
+    },
+    "ours_server_ms (in-process quote)": {
+      "n": 124,
+      "p50": 66.0,
+      "p95": 138.0,
+      "mean": 66.44354838709677
+    }
+  },
+  "route_agreement_vs_restricted": {
+    "n": 115,
+    "mean_jaccard": 0.5384057971014493,
+    "median_jaccard": 0.5,
+    "identical_pct": 46.95652173913044
+  }
+}

@@ -1,0 +1,63 @@
+services:
+  nats:
+    image: nats:2.10-alpine
+    ports:
+      - "4222:4222"   # client connections
+      - "8222:8222"   # HTTP monitoring
+    command: ["--js", "-m", "8222"]
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-distributed}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-distributed}
+      POSTGRES_DB: ${POSTGRES_DB:-aggregator}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # --- Observability ---
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "4317:4317"    # OTLP gRPC (receives traces from OTel Collector)
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    ports:
+      - "4318:4318"    # OTLP HTTP (services send traces here)
+    volumes:
+      - ./deploy/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
+    depends_on:
+      - jaeger
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9092:9090"    # Prometheus UI (9092 to avoid conflict with enricher metrics on 9090)
+    volumes:
+      - ./deploy/prometheus.yaml:/etc/prometheus/prometheus.yml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3003:3000"    # Grafana UI (3003 to avoid conflict with gateway on 3000)
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    volumes:
+      - ./deploy/grafana/provisioning:/etc/grafana/provisioning
+      - ./deploy/grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
+
+volumes:
+  pgdata:

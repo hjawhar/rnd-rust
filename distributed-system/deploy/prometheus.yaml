@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: gateway
+    static_configs:
+      - targets: ["host.docker.internal:3000"]
+        labels:
+          app: gateway
+
+  - job_name: aggregator
+    static_configs:
+      - targets: ["host.docker.internal:3001"]
+        labels:
+          app: aggregator
+
+  - job_name: enricher
+    static_configs:
+      - targets: ["host.docker.internal:9090"]
+        labels:
+          app: enricher
+
+  - job_name: processor
+    static_configs:
+      - targets: ["host.docker.internal:9091"]
+        labels:
+          app: processor

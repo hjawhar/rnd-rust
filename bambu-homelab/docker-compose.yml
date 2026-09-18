@@ -1,0 +1,130 @@
+services:
+  nats:
+    image: nats:latest
+    container_name: bambu-nats
+    ports:
+      - "127.0.0.1:4222:4222"
+    volumes:
+      - ./.local/nats-server-resolved.conf:/etc/nats/nats-server.conf:ro
+      - ./.local/certs:/etc/nats/certs:ro
+      - ./.local/nats-data:/data
+    command: ["--config", "/etc/nats/nats-server.conf"]
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: bambu-postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_DB: bambu
+      POSTGRES_USER: bambu
+      POSTGRES_PASSWORD: bambu_dev
+    volumes:
+      - ./.local/postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  gateway:
+    build: .
+    container_name: bambu-gateway
+    command: ["bambu-gateway"]
+    env_file: .env.docker
+    volumes:
+      - ./.local/certs:/app/certs:ro
+    depends_on:
+      - nats
+    restart: unless-stopped
+
+  api:
+    build: .
+    container_name: bambu-api
+    command: ["bambu-api"]
+    ports:
+      - "127.0.0.1:3000:8081"
+    env_file: .env.docker
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./.local/certs:/app/certs:ro
+    depends_on:
+      - nats
+      - postgres
+    restart: unless-stopped
+
+  bridge:
+    build: .
+    container_name: bambu-bridge
+    command: ["bambu-bridge"]
+    # Host network so bridge can reach printers on the LAN.
+    network_mode: host
+    env_file: .env.bridge
+    volumes:
+      - ./.local/certs:/app/certs:ro
+    restart: unless-stopped
+
+  video-relay:
+    image: linuxserver/ffmpeg:latest
+    container_name: bambu-video-relay
+    network_mode: host
+    volumes:
+      - ./services/video-relay/start.sh:/start.sh:ro
+      - ./.local/streams:/streams
+    entrypoint: ["/bin/bash", "/start.sh"]
+    restart: unless-stopped
+
+  hls:
+    image: nginx:alpine
+    container_name: bambu-hls
+    ports:
+      - "127.0.0.1:8090:80"
+    volumes:
+      - ./.local/streams:/usr/share/nginx/html/streams:ro
+      - ./.local/timelapses:/usr/share/nginx/html/timelapses:ro
+      - ./services/video-relay/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - video-relay
+    restart: unless-stopped
+
+  timelapse:
+    image: linuxserver/ffmpeg:latest
+    container_name: bambu-timelapse
+    network_mode: host
+    volumes:
+      - ./services/timelapse/capture.sh:/capture.sh:ro
+      - ./.local/timelapses:/timelapses
+    environment:
+      TIMELAPSE_INTERVAL: "10"
+    entrypoint: ["/bin/bash", "/capture.sh"]
+    restart: unless-stopped
+
+
+  # --- Remote access (optional) ---
+  # Build the dashboard first: cd dashboard && npm install && npx ng build
+  # Then: docker compose up -d web tunnel
+
+  web:
+    image: nginx:alpine
+    container_name: bambu-web
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./dashboard/dist/dashboard/browser:/usr/share/nginx/html:ro
+      - ./services/web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api
+      - hls
+    restart: unless-stopped
+    profiles:
+      - remote
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: bambu-tunnel
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - web
+    restart: unless-stopped
+    profiles:
+      - remote

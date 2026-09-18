@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:17.5
+    container_name: vm_db
+    volumes:
+      - ../../current_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vm_user}
+      POSTGRES_DB: ${POSTGRES_DB:-vm_db}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    ports:
+      - "0.0.0.0:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}'"]
+      interval: 3s
+      timeout: 3s
+      retries: 3
+
+  web:
+    image: rust:1.90.0
+    container_name: vm_backend
+    working_dir: /home/vm_backend
+    command: "cargo run --release --bin api-server"
+    env_file:
+      - path: ../../.env
+        required: false
+    volumes:
+      - ../../backend:/home/vm_backend
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      DATABASE_URL: "postgres://${POSTGRES_USER:-vm_user}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB:-vm_db}"
+    ports:
+      - 3000:3000
+    links:
+      - db

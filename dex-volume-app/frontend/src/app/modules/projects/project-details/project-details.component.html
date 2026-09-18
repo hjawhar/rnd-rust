@@ -1,0 +1,390 @@
+<div class="page-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="project-header-info" *ngIf="project">
+            <div class="project-avatar-lg">
+                <img *ngIf="project.image" [src]="project.image" [alt]="project.name" class="project-avatar-img">
+                <div *ngIf="!project.image" class="project-avatar-placeholder">
+                    <i class="bi bi-currency-exchange"></i>
+                </div>
+            </div>
+            <div class="project-header-text">
+                <h1 class="page-title">{{project.name}}</h1>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="badge badge-primary">{{getTradingStrategy(project.trading_strategy)}}</span>
+                    <span class="status-badge"
+                        [class.status-running]="project.status === 'running'"
+                        [class.status-stopped]="project.status === 'stopped'">
+                        {{project.status}}
+                    </span>
+                    <span class="status-badge status-locked" *ngIf="project.locked">
+                        <i class="bi bi-lock-fill"></i> Locked
+                    </span>
+                    <span class="status-badge status-scheduled" *ngIf="!project.locked && project.lock_at">
+                        <i class="bi bi-clock"></i> Locks {{project.lock_at.secs_since_epoch * 1000 | date: 'dd MMM HH:mm'}}
+                        <i class="bi bi-x-circle-fill cancel-scheduled" (click)="cancelScheduledLock(); $event.stopPropagation()"></i>
+                    </span>
+                    <span class="chain-icon">
+                        <img *ngIf="project.network === 'solana'" src="./assets/images/solana.svg" alt="Solana" />
+                        <img *ngIf="project.network === 'base'" src="./assets/images/ethereum.svg" alt="Base" />
+                    </span>
+                    <span class="token-symbol">${{project.symbol}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex gap-2" *ngIf="project">
+            <button *ngIf="isAdmin()" mat-raised-button
+                [class]="project.locked ? 'action-btn action-btn-success' : 'action-btn action-btn-warning'"
+                (click)="toggleLock()">
+                <i [class]="project.locked ? 'bi bi-unlock-fill' : 'bi bi-lock-fill'"></i>
+                {{project.locked ? 'Unlock' : 'Lock'}}
+            </button>
+            <button mat-raised-button class="action-btn action-btn-danger" (click)="deleteProject()" [disabled]="project.locked">
+                <i class="bi bi-trash"></i>
+                Delete Project
+            </button>
+        </div>
+    </div>
+
+    <ng-container *ngIf="project && projectStatistics">
+        <!-- Info Cards Row -->
+        <div class="row mb-4">
+            <!-- Project Info Card -->
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <h3 class="info-card-title">Project Info</h3>
+                        <div class="info-card-icon">
+                            <i class="bi bi-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Token Address</span>
+                        <a class="address-link" [href]="explorerBaseUrl+'/address/'+project.address" target="_blank">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                            {{addressAbrev(project.address)}}
+                        </a>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Pool</span>
+                        <a class="address-link" [href]="explorerBaseUrl+'/address/'+project.pool" target="_blank">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                            {{addressAbrev(project.pool)}}
+                        </a>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Pool Type</span>
+                        <span class="stat-value">{{project.pool_type}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Fees</span>
+                        <span class="stat-value">{{project.fees}}%</span>
+                    </div>
+                    <div class="stat-row" *ngIf="projectFinancials">
+                        <span class="stat-label">{{nativeSymbol}} Balance</span>
+                        <span class="stat-value">
+                            {{projectFinancials.balance0 | number:'1.2-2'}} {{nativeSymbol}}
+                        </span>
+                    </div>
+                    <div class="stat-row" *ngIf="projectFinancials">
+                        <span class="stat-label">Pool Balance</span>
+                        <span class="stat-value">
+                            {{projectFinancials.balance1 | number:'1.2-2'}} {{project.symbol}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Card -->
+            <div class="col-lg-3 col-md-6 mb-3" *ngIf="projectStatistics">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <h3 class="info-card-title">Statistics</h3>
+                        <div class="info-card-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                    </div>
+                    <div class="time-filters mb-3">
+                        <span class="time-filter-btn" [class.active]="statisticsInterval === '5m'"
+                            (click)="fetchStatistics('5m')">5m</span>
+                        <span class="time-filter-btn" [class.active]="statisticsInterval === '1hr'"
+                            (click)="fetchStatistics('1hr')">1hr</span>
+                        <span class="time-filter-btn" [class.active]="statisticsInterval === '6hr'"
+                            (click)="fetchStatistics('6hr')">6hr</span>
+                        <span class="time-filter-btn" [class.active]="statisticsInterval === '24hr'"
+                            (click)="fetchStatistics('24hr')">24hr</span>
+                        <span class="time-filter-btn" [class.active]="statisticsInterval === 'all'"
+                            (click)="fetchStatistics('all')">All</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Volume</span>
+                        <span class="stat-value">${{projectStatistics.total.usdc | number: '1.2-2'}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total {{nativeSymbol}}</span>
+                        <span class="stat-value">{{projectStatistics.total.native | number: '1.2-2'}} {{nativeSymbol}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Buys</span>
+                        <span class="stat-value text-success">{{projectStatistics.buy.native | number: '1.2-2'}}
+                            {{nativeSymbol}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Sells</span>
+                        <span class="stat-value text-danger">{{projectStatistics.sell.native | number: '1.2-2'}}
+                            {{nativeSymbol}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Daily Volume</span>
+                        <span class="stat-value text-success">${{projectStatistics.daily_volume.volume_usdc| number:
+                            '1.2-2'}} / ${{projectStatistics.daily_volume.target_usdc| number: '1.2-2'}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Card -->
+            <div class="col-lg-3 col-md-6 mb-3" *ngIf="subscriptionInfo">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <h3 class="info-card-title">Subscription</h3>
+                        <div class="info-card-icon">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Monthly Rate</span>
+                        <span class="stat-value">${{subscriptionInfo.monthly_rate}} {{subscriptionInfo.currency}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value">
+                            <span class="status-badge"
+                                [class.status-running]="subscriptionInfo.status === 'active'"
+                                [class.status-stopped]="subscriptionInfo.status !== 'active'">
+                                {{subscriptionInfo.status}}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Next Payment</span>
+                        <span class="stat-value">{{subscriptionInfo.next_payment_due.secs_since_epoch * 1000 | date: 'dd MMM yyyy'}}</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Started</span>
+                        <span class="stat-value">{{subscriptionInfo.started_at.secs_since_epoch * 1000 | date: 'dd MMM yyyy'}}</span>
+                    </div>
+                    <div class="stat-row" *ngIf="subscriptionInfo.is_overdue">
+                        <span class="stat-label">Overdue</span>
+                        <span class="stat-value text-danger">{{subscriptionInfo.days_overdue}} days</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Wallet Card -->
+            <div class="col-lg-3 col-md-6 mb-3" *ngIf="wallet_main">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <h3 class="info-card-title">Primary Wallet</h3>
+                        <div class="d-flex gap-2">
+                            <a class="address-link" [href]="explorerBaseUrl+'/address/'+wallet_main.address"
+                                target="_blank">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                                {{addressAbrev(wallet_main.address)}}
+                            </a>
+                            <span class="icon-btn" (click)="download()" title="Export Wallet">
+                                <i class="bi bi-download"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="balance-grid">
+                        <div class="balance-item">
+                            <div class="balance-label">Tokens</div>
+                            <div class="balance-value">{{wallet_main.token_balance | number:'1.2-2'}}</div>
+                        </div>
+                        <div class="balance-item">
+                            <div class="balance-label">USDC</div>
+                            <div class="balance-value">{{wallet_main.native_usdc | number:'1.2-2'}}</div>
+                        </div>
+                        <div class="balance-item">
+                            <div class="balance-label">{{nativeSymbol}}</div>
+                            <div class="balance-value">{{wallet_main.native_balance | number:'1.4-4'}}</div>
+                        </div>
+                    </div>
+                    <div class="action-buttons mt-3">
+                        <span class="action-btn" [class.disabled]="project.locked" (click)="!project.locked && collectSOL()">
+                            <i class="bi bi-box-arrow-in-down"></i> Collect {{nativeSymbol}}
+                        </span>
+                        <span class="action-btn" [class.disabled]="project.locked" (click)="!project.locked && collectTokens()">
+                            <i class="bi bi-box-arrow-in-down"></i> Collect Tokens
+                        </span>
+                        <span class="action-btn" [class.disabled]="project.locked" (click)="!project.locked && disperseSOL()">
+                            <i class="bi bi-box-arrow-up"></i> Disperse {{nativeSymbol}}
+                        </span>
+                        <span class="action-btn" [class.disabled]="project.locked" (click)="!project.locked && disperseTokens()">
+                            <i class="bi bi-box-arrow-up"></i> Disperse Tokens
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DexScreener Chart -->
+        <div class="chart-container mb-4" *ngIf="chartUrl">
+            <div class="chart-header">
+                <h3 class="chart-title">
+                    <i class="bi bi-graph-up"></i>
+                    Price Chart
+                </h3>
+                <a class="chart-link" [href]="'https://dexscreener.com/' + dexscreenerChain + '/' + project.pool" target="_blank">
+                    <span>View on DexScreener</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
+            <div class="chart-frame">
+                <iframe [src]="chartUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Settings Card - Volume Maker -->
+        <form [formGroup]="volumeSettingsForm">
+            <div class="settings-card" *ngIf="isVolumeMaker()">
+                <div class="settings-card-header">
+                    <div class="settings-card-title">
+                        <i class="bi bi-gear"></i>
+                        <span>Volume Maker</span>
+                    </div>
+                    <div class="settings-card-cost">
+                        <i class="bi bi-calculator"></i>
+                        <span>Est. Cost: {{getTradingCost()}}</span>
+                    </div>
+                </div>
+                <div class="settings-card-body">
+                    <div class="settings-card-fields">
+                        <div class="compact-field">
+                            <label>Daily Volume (USDC)</label>
+                            <input formControlName="trading_daily_volume" type="text" placeholder="Volume">
+                        </div>
+                        <div class="compact-field">
+                            <label>Interval (sec)</label>
+                            <input formControlName="trading_interval" type="number" placeholder="Interval">
+                        </div>
+                        <div class="compact-field">
+                            <label>Max Impact (bps)</label>
+                            <input formControlName="max_market_impact_bps" type="number" placeholder="e.g. 30">
+                        </div>
+                        <div class="compact-field">
+                            <label>Trade Multiplier</label>
+                            <input formControlName="trade_multiplier" type="number" step="0.1" placeholder="e.g. 2.0">
+                        </div>
+                        <div class="compact-field">
+                            <label>Slippage (%)</label>
+                            <input formControlName="slippage" type="number" step="1" placeholder="e.g. 10">
+                        </div>
+                        <div class="compact-field">
+                            <label>Bundle</label>
+                            <select formControlName="bundle_enabled">
+                                <option [ngValue]="true">Enabled</option>
+                                <option [ngValue]="false">Disabled</option>
+                            </select>
+                        </div>
+                        <div class="compact-field" *ngIf="project?.network === 'solana'">
+                            <label>Jito Tip (SOL)</label>
+                            <input formControlName="jito_tip" type="number" step="0.00001" placeholder="0.00002">
+                        </div>
+                    </div>
+                    <div class="settings-card-actions">
+                        <span class="icon-btn-sm" [class.disabled]="project.locked" (click)="!project.locked && save()" title="Save">
+                            <i class="bi bi-check-lg"></i>
+                        </span>
+                        <span class="icon-btn-sm icon-btn-success" [class.disabled]="project.locked" (click)="!project.locked && startTask()" title="Start">
+                            <i class="bi bi-play-fill"></i>
+                        </span>
+                        <span class="icon-btn-sm icon-btn-danger" [class.disabled]="project.locked" (click)="!project.locked && stopTask()" title="Stop">
+                            <i class="bi bi-stop-fill"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Wallets Summary Component -->
+
+        <div class="stats-cards-row" *ngIf="walletsSummary">
+            <div class="stat-card">
+                <div class="stat-card-icon icon-usdc">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="stat-card-content">
+                    <span class="stat-card-value">{{walletsSummary.total_usdc| number:'1.2-2'}}</span>
+                    <span class="stat-card-label">Notional</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-icon">
+                    <i class="bi bi-coin"></i>
+                </div>
+                <div class="stat-card-content">
+                    <span class="stat-card-value">{{walletsSummary.total_tokens | number:'1.2-2'}}</span>
+                    <span class="stat-card-label">Total Tokens</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-icon icon-sol">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+                <div class="stat-card-content">
+                    <span class="stat-card-value">{{walletsSummary.total_native| number:'1.4-4'}}</span>
+                    <span class="stat-card-label">{{nativeSymbol}} Wallet</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-icon icon-active">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <div class="stat-card-content">
+                    <span class="stat-card-value">{{wallets.length}}</span>
+                    <span class="stat-card-label">Active Wallets</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-icon icon-trades">
+                    <i class="bi bi-arrow-left-right"></i>
+                </div>
+                <div class="stat-card-content">
+                    <span class="stat-card-value">{{totalCount | number}}</span>
+                    <span class="stat-card-label">Trades</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container mt-4">
+            <span class="tab-btn" [class.active]="currentTab == ProjectTab.WALLETS"
+                (click)="changeTab(ProjectTab.WALLETS)">
+                <i class="bi bi-wallet2 me-2"></i> Wallets
+            </span>
+            <span class="tab-btn" [class.active]="currentTab == ProjectTab.TRADING_LOGS"
+                (click)="changeTab(ProjectTab.TRADING_LOGS)">
+                <i class="bi bi-list-ul me-2"></i> Trading Logs
+            </span>
+        </div>
+
+        <!-- Tab Content -->
+        <ng-container *ngIf="currentTab == ProjectTab.TRADING_LOGS">
+            <app-list-trading-logs [transactions]="transactions" [totalCount]="totalCount" [pageSize]="pageSize"
+                [explorerBaseUrl]="explorerBaseUrl" (onChangedPage)="onChangedPage($event)"></app-list-trading-logs>
+        </ng-container>
+
+        <ng-container *ngIf="currentTab == ProjectTab.WALLETS">
+            <app-list-wallets #walletsList *ngIf="project" [wallets]="wallets" [projectId]="project.id!"
+                [nativeSymbol]="nativeSymbol" [explorerBaseUrl]="explorerBaseUrl" (walletUpdated)="onWalletUpdated($event)"
+                (refreshWallets)="refreshWalletsData()">
+            </app-list-wallets>
+        </ng-container>
+    </ng-container>
+</div>
